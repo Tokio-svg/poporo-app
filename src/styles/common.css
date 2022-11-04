@@ -1,4 +1,13 @@
-#main {
+.app-root {
   display: flex;
   min-height: 100vh;
+  color: #4388dc;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
+.app-main {
+  width: 100vw;
+  padding-left: 180px;
+  background-color: #2d333b;
 }

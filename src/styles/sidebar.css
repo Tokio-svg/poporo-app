@@ -1,4 +1,23 @@
 .sidebar__container {
-  background-color: cadetblue;
+  background-color: #1c2128;
   min-height: 100vh;
+  width: 180px;
+  border-right: 1px solid #55dc43;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidebar__button {
+  text-align: center;
+  padding: 15px 0;
+  border: 1px solid #55dc43;
+}
+
+.sidebar__button:hover {
+  background-color: #2f363f;
+}
+
+.button__active {
+  color: aqua;
 }
