@@ -145,7 +145,7 @@ export default {
         buyingPrice: 15000,
         sellingPrice: 7500,
         drop: true,
-        shop: true,
+        shop: false,
         change: true
       },
       {
@@ -277,7 +277,7 @@ export default {
         buyingPrice: 5000,
         sellingPrice: 2500,
         drop: true,
-        shop: true,
+        shop: false,
         change: true
       },
       {
@@ -366,9 +366,717 @@ export default {
         buyingPrice: 600,
         sellingPrice: 300,
         drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 30,
+        name: '胃下垂のたね',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 31,
+        name: '胃縮小のたね',
+        buyingPrice: 600,
+        sellingPrice: 300,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 32,
+        name: '命の草',
+        buyingPrice: 4000,
+        sellingPrice: 2000,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 33,
+        name: '弟切草',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 34,
+        name: '踊り草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 35,
+        name: '火炎草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 36,
+        name: 'かなしばりのたね',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 37,
+        name: '雑草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 38,
+        name: 'しあわせのたね',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 39,
+        name: 'しんぴの草',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 40,
+        name: 'すばやさのたね',
+        buyingPrice: 350,
+        sellingPrice: 170,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 41,
+        name: '世界樹の葉',
+        buyingPrice: 1500,
+        sellingPrice: 750,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 42,
+        name: 'ちからのたね',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: false,
+        shop: true,
+        change: false
+      },
+      {
+        id: 43,
+        name: 'でたらめ草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 44,
+        name: '鉄化のたね',
+        buyingPrice: 200,
+        sellingPrice: 100,
+        drop: false,
+        shop: true,
+        change: true
+      },
+      {
+        id: 45,
+        name: '毒消し草',
+        buyingPrice: 300,
+        sellingPrice: 1,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 46,
+        name: '毒草',
+        buyingPrice: 150,
+        sellingPrice: 75,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 47,
+        name: 'バーサーカーの種',
+        buyingPrice: 150,
+        sellingPrice: 75,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 48,
+        name: 'ふこうのたね',
+        buyingPrice: 300,
+        sellingPrice: 150,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 49,
+        name: 'まどわし草',
+        buyingPrice: 150,
+        sellingPrice: 75,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 50,
+        name: 'めぐすり草',
+        buyingPrice: 300,
+        sellingPrice: 150,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 51,
+        name: '目覚まし草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 52,
+        name: 'メダパニ草',
+        buyingPrice: 200,
+        sellingPrice: 100,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 53,
+        name: 'めつぶし草',
+        buyingPrice: 200,
+        sellingPrice: 100,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 54,
+        name: '薬草',
+        buyingPrice: 2000,
+        sellingPrice: 1000,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 55,
+        name: 'ラリホー草',
+        buyingPrice: 200,
+        sellingPrice: 100,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 56,
+        name: 'ルーラ草',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
         shop: true,
         change: true
       }
     ]
+  },
+
+  'scroll': {
+    header: [
+      '名前', '買値', '売値', '床', '店', '変化'
+    ],
+    data: [
+      {
+        id: 57,
+        name: 'イオの巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: false,
+        shop: true,
+        change: true
+      },
+      {
+        id: 58,
+        name: 'インパスの巻物',
+        buyingPrice: 500,
+        sellingPrice: 250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 59,
+        name: 'うしろむきの巻物',
+        buyingPrice: 500,
+        sellingPrice: 250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 60,
+        name: '炎上の巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 61,
+        name: '黄金の紙切れ',
+        buyingPrice: 20000,
+        sellingPrice: 1000,
+        drop: false,
+        shop: false,
+        change: false
+      },
+      {
+        id: 62,
+        name: '大風の巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 63,
+        name: '大部屋の巻物',
+        buyingPrice: 300,
+        sellingPrice: 150,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 64,
+        name: 'かなしばりの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 65,
+        name: '銀のたてごとの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 66,
+        name: 'くちなしの巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 67,
+        name: 'ザオラルの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 68,
+        name: '時限爆弾の巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 69,
+        name: '地獄耳の巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 70,
+        name: 'シャナクの巻物',
+        buyingPrice: 3000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 71,
+        name: 'スカラの巻物',
+        buyingPrice: 1500,
+        sellingPrice: 750,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 72,
+        name: 'すてみの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 73,
+        name: '砂柱の巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 74,
+        name: '聖域の巻物',
+        buyingPrice: 2500,
+        sellingPrice: 1250,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 75,
+        name: '聖城の巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 76,
+        name: '千里眼の巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 77,
+        name: 'チキンの巻物',
+        buyingPrice: 20000,
+        sellingPrice: 1,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 78,
+        name: '中部屋の巻物',
+        buyingPrice: 700,
+        sellingPrice: 350,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 79,
+        name: '壺強化の巻物',
+        buyingPrice: 700,
+        sellingPrice: 350,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 80,
+        name: 'トラマナの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 81,
+        name: 'ニフラムの巻物',
+        buyingPrice: 20000,
+        sellingPrice: 1,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 82,
+        name: 'バイキルトの巻物',
+        buyingPrice: 1500,
+        sellingPrice: 750,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 83,
+        name: '白紙の巻物',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 84,
+        name: 'バクスイの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 85,
+        name: 'はりつけの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 86,
+        name: 'パワーアップの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 87,
+        name: 'パンの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 88,
+        name: 'ひきよせの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 89,
+        name: '氷結の巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 90,
+        name: '拾えずの巻物',
+        buyingPrice: 2500,
+        sellingPrice: 1250,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 91,
+        name: 'ふはつの巻物',
+        buyingPrice: 2000,
+        sellingPrice: 1000,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 92,
+        name: 'ベホマラーの巻物',
+        buyingPrice: 2500,
+        sellingPrice: 1250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 93,
+        name: '変身の巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 94,
+        name: '巻物のきれはし',
+        buyingPrice: 1500,
+        sellingPrice: 700,
+        drop: false,
+        shop: false,
+        change: false
+      },
+      {
+        id: 95,
+        name: 'まものいそぎの巻物',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 96,
+        name: 'まものしばりの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 97,
+        name: '水がれの巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 98,
+        name: 'メダパニの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 99,
+        name: 'メッキの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 100,
+        name: 'モンスターの巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: false,
+        shop: true,
+        change: true
+      },
+      {
+        id: 101,
+        name: 'リレミトの巻物',
+        buyingPrice: 100,
+        sellingPrice: 50,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 102,
+        name: 'ルカナンの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 103,
+        name: 'レミーラの巻物',
+        buyingPrice: 650,
+        sellingPrice: 300,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 104,
+        name: 'ワナけしの巻物',
+        buyingPrice: 500,
+        sellingPrice: 250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 105,
+        name: 'ワナ作動の巻物',
+        buyingPrice: 400,
+        sellingPrice: 200,
+        drop: false,
+        shop: true,
+        change: false
+      },
+      {
+        id: 106,
+        name: 'ワナの巻物',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      }
+    ]
+  },
+
+  'cane': {
+    header: [
+      '名前', '買値', '売値', '床', '店', '変化'
+    ],
+    data: []
   }
 }

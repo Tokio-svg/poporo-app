@@ -7,6 +7,12 @@
       <div class="itemList__header--button" @click="changeData('weed')" :class="{ button__active: select === 'weed' }">
         草
       </div>
+      <div class="itemList__header--button" @click="changeData('scroll')" :class="{ button__active: select === 'scroll' }">
+        巻物
+      </div>
+      <div class="itemList__header--button" @click="changeData('cane')" :class="{ button__active: select === 'cane' }">
+        杖
+      </div>
     </div>
     <item-table :table-data="tableData" />
   </div>

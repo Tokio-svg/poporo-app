@@ -1,28 +1,28 @@
-.itemList__table--container {
+.monsterList__table--container {
   padding-top: 60px;
 }
 
-.itemList__table--number {
+.monsterList__table--number {
   text-align: right;
 }
 
-.itemList__table {
+.monsterList__table {
   border-collapse: collapse;
   font-size: 12px;
   margin: 10px auto;
   text-align: center;
 }
 
-.itemList__table th,
-.itemList__table td {
+.monsterList__table th,
+.monsterList__table td {
   border: 1px solid white;
-  padding: 3px 8px;
+  padding: 3px 4px;
 }
 
-.itemList__table td {
+.monsterList__table td {
   background-color: #1c2128;
 }
-.itemList__table th {
+.monsterList__table th {
   color: #2d333b;
   background-color: #4388dc;
   text-align: center;

@@ -1,6 +1,7 @@
 <template>
   <div class="itemList__table--container">
-    <table>
+    <!-- オブジェクトは順番が保証されないので要修正 -->
+    <table class="itemList__table">
       <tr>
         <template v-for="header in tableData.header" :key="header">
           <th>{{ header }}</th>
@@ -9,7 +10,11 @@
       <template v-for="item in tableData.data" :key="item.id">
         <tr>
           <template v-for="(param, key) in item" :key="param">
-            <td v-if="key!=='id'">{{param}}</td>
+            <template v-if="key!=='id'">
+              <td
+                :class="{ 'itemList__table--number': key === 'buyingPrice' || key === 'sellingPrice' }">
+                {{ displayParam(param) }}</td>
+            </template>
           </template>
         </tr>
       </template>
@@ -21,6 +26,15 @@
 export default {
   props: {
     tableData: Object
+  },
+
+  methods: {
+    displayParam(param) {
+      let returnParam = param
+      if (param===true) returnParam = '●'
+      if (param===false) returnParam = ''
+      return returnParam
+    }
   }
 }
 </script>
