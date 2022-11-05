@@ -12,14 +12,17 @@
       </tr>
       <template v-for="item in displayData" :key="item.id">
         <tr>
-          <!-- オブジェクトは順番が保証されないので要修正 -->
-          <template v-for="(param, key) in item" :key="param">
-            <template v-if="key!=='id'">
-              <td
-                :class="{ 'itemList__table--number': key === 'buyingPrice' || key === 'sellingPrice' }">
-                {{ displayParam(param) }}</td>
-            </template>
+          <td>{{item.name}}</td>
+          <template v-if="item.hasOwnProperty('slot')">
+            <td>{{item.slot}}</td>
+            <td>{{item.slotName}}</td>
+            <td>{{item.slotPriority}}</td>
           </template>
+          <td class="itemList__table--number">{{item.buyingPrice}}</td>
+          <td class="itemList__table--number">{{item.sellingPrice}}</td>
+          <td>{{displayParam(item.drop)}}</td>
+          <td>{{displayParam(item.shop)}}</td>
+          <td>{{displayParam(item.change)}}</td>
         </tr>
       </template>
     </table>
