@@ -4,7 +4,6 @@
     <div v-for="param in MonsterData" :key="param">
       {{ param }}
     </div>
-    <p>{{$route.path}}</p>
   </div>
 </template>
 
