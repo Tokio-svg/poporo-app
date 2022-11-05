@@ -13,6 +13,9 @@
       <div class="itemList__header--button" @click="changeData('cane')" :class="{ button__active: select === 'cane' }">
         杖
       </div>
+      <div class="itemList__header--button" @click="changeData('pot')" :class="{ button__active: select === 'pot' }">
+        壺
+      </div>
     </div>
     <item-table :table-data="tableData" />
   </div>
@@ -36,7 +39,7 @@ export default {
 
   methods: {
     changeData(str) {
-      this.tableData = ItemData[str]
+      this.tableData = Object.assign({}, ItemData[str])
       this.select = str
     }
   }

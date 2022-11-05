@@ -1,7 +1,7 @@
 export default {
   'ring': {
     header: [
-      '名前', '印数', '印', '優先度', '買値', '売値', '床', '店', '変化'
+      '名前', '印数', '印', '優先順', '買値', '売値', '床', '店', '変化'
     ],
     data: [
       {
@@ -1074,6 +1074,401 @@ export default {
   },
 
   'cane': {
+    header: [
+      '名前', '買値', '売値', '床', '店', '変化'
+    ],
+    data: [
+      {
+        id: 107,
+        name: 'いかずちの杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: false,
+        shop: true,
+        change: true
+      },
+      {
+        id: 108,
+        name: 'イカリの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 109,
+        name: '痛みわけの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 110,
+        name: '一時しのぎの杖',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 111,
+        name: '大損の杖',
+        buyingPrice: 2000,
+        sellingPrice: 1000,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 112,
+        name: 'おびえの杖',
+        buyingPrice: 2000,
+        sellingPrice: 1000,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 113,
+        name: '風の杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 114,
+        name: 'かなしばりの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 115,
+        name: 'きとうしの杖',
+        buyingPrice: 3000,
+        sellingPrice: 1500,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 116,
+        name: 'クオーターの杖',
+        buyingPrice: 2000,
+        sellingPrice: 1000,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 117,
+        name: 'げんじゅつしの杖',
+        buyingPrice: 8000,
+        sellingPrice: 4000,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 118,
+        name: '氷柱の杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 119,
+        name: 'ゴッドスパークの杖',
+        buyingPrice: 10000,
+        sellingPrice: 5000,
+        drop: false,
+        shop: false,
+        change: false
+      },
+      {
+        id: 120,
+        name: '転ばぬ先の杖',
+        buyingPrice: 3000,
+        sellingPrice: 1400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 121,
+        name: 'ザキの杖',
+        buyingPrice: 10000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 122,
+        name: '砂柱の杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 123,
+        name: 'とびつきの杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 124,
+        name: 'ドルイドの杖',
+        buyingPrice: 6000,
+        sellingPrice: 3000,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 125,
+        name: 'トンネルの杖',
+        buyingPrice: 500,
+        sellingPrice: 200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 126,
+        name: 'バーサーカーの杖',
+        buyingPrice: 3000,
+        sellingPrice: 1500,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 127,
+        name: '場所替えの杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 128,
+        name: 'バシルーラの杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 129,
+        name: '万能の杖',
+        buyingPrice: 3000,
+        sellingPrice: 1500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 130,
+        name: 'ピオリムの杖',
+        buyingPrice: 2500,
+        sellingPrice: 1200,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 131,
+        name: 'ひきよせの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 132,
+        name: '火柱の杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 133,
+        name: '封印の杖',
+        buyingPrice: 1500,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 134,
+        name: 'ふきとばしの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 135,
+        name: '分裂の杖',
+        buyingPrice: 2500,
+        sellingPrice: 1200,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 136,
+        name: 'へんげの杖',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 137,
+        name: 'ホイミの杖',
+        buyingPrice: 500,
+        sellingPrice: 250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 138,
+        name: 'ボミオスの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 139,
+        name: 'マヌーサの杖',
+        buyingPrice: 5000,
+        sellingPrice: 2500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 140,
+        name: '丸得の杖',
+        buyingPrice: 10000,
+        sellingPrice: 1,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 141,
+        name: '身代わりの杖',
+        buyingPrice: 2500,
+        sellingPrice: 1000,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 142,
+        name: 'ミミックの杖',
+        buyingPrice: 3000,
+        sellingPrice: 1500,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 143,
+        name: 'メダパニの杖',
+        buyingPrice: 1200,
+        sellingPrice: 250,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 144,
+        name: 'もろはの杖',
+        buyingPrice: 1000,
+        sellingPrice: 500,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 145,
+        name: 'ようじゅつしの杖',
+        buyingPrice: 4000,
+        sellingPrice: 2000,
+        drop: false,
+        shop: false,
+        change: true
+      },
+      {
+        id: 146,
+        name: 'ラリホーの杖',
+        buyingPrice: 1200,
+        sellingPrice: 400,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 147,
+        name: 'ルカニの杖',
+        buyingPrice: 1200,
+        sellingPrice: 600,
+        drop: true,
+        shop: true,
+        change: true
+      },
+      {
+        id: 148,
+        name: 'レミーラの杖',
+        buyingPrice: 800,
+        sellingPrice: 400,
+        drop: true,
+        shop: false,
+        change: true
+      },
+      {
+        id: 149,
+        name: 'レムオルの杖',
+        buyingPrice: 3000,
+        sellingPrice: 1200,
+        drop: true,
+        shop: false,
+        change: true
+      },
+    ]
+  },
+
+  'pot': {
     header: [
       '名前', '買値', '売値', '床', '店', '変化'
     ],
