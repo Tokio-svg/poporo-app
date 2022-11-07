@@ -20,7 +20,8 @@
       <template v-for="monster in MonsterData" :key="monster.id">
         <tr>
           <td><router-link
-                :to="{ name: 'monster_detail', params: { id: monster.id }}">
+                :to="{ name: 'monster_detail', params: { id: monster.id }}"
+                class="monsterList__table--name">
                 {{ monster.name }}</router-link></td>
           <td>{{ monster.floor }}F</td>
           <td>{{ monster.type1 }}</td>

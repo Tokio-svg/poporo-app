@@ -1,49 +1,72 @@
 <template>
   <div>
-    <p>{{ MonsterData.name }}</p>
-    <radar-chart :chart-data="dataCollection" :chart-options="options" />
-
-    <button @click="changeLevel(-10)">-10</button>
-    <button @click="changeLevel(-1)">-1</button>
-    <div>レベル: {{displayLevel}}</div>
-    <button @click="changeLevel(1)">+1</button>
-    <button @click="changeLevel(10)">+10</button>
-    <div>
-      <button @click="resetLevel">初期レベルにリセット</button>
+    <div class="monsterDetail__title">
+      {{ MonsterData.name }}
     </div>
-    <table class="monsterList__table">
+
+    <div class="monsterDetail__chart--container">
+      <radar-chart :chart-param="chartParam" />
+    </div>
+
+    <div class="controlPanel">
+      <div>レベルコントロールパネル</div>
+      <button @click="changeLevel(-10)" class="button__level">-10</button>
+      <button @click="changeLevel(-1)" class="button__level">-1</button>
+      <div class="displayLevel">{{displayLevel}}</div>
+      <button @click="changeLevel(1)" class="button__level">+1</button>
+      <button @click="changeLevel(10)" class="button__level">+10</button>
+      <div>
+        <button @click="resetLevel" class="button__reset">初期レベルにリセット</button>
+      </div>
+    </div>
+
+    <table class="monsterDetail__table">
+      <tr>
+        <th>Lv</th>
+        <th>限Lv</th>
+        <th>HP</th>
+        <th>攻撃</th>
+        <th>防御</th>
+        <th>回復</th>
+        <th>成長</th>
+        <th>修正値</th>
+      </tr>
+      <tr>
+        <td class="monsterDetail__table--number">{{ displayLevel }}</td>
+        <td class="monsterDetail__table--number">{{ MonsterData.maxLevel }}</td>
+        <td class="monsterDetail__table--number">{{ displayHP }}</td>
+        <td class="monsterDetail__table--number">{{ displayATK }}</td>
+        <td class="monsterDetail__table--number">{{ displayDEF }}</td>
+        <td class="monsterDetail__table--number">{{ MonsterData.heal }}</td>
+        <td>{{ MonsterData.growth }}</td>
+        <td class="monsterDetail__table--number">{{ MonsterData.correction }}</td>
+      </tr>
+    </table>
+
+    <table class="monsterDetail__table">
       <tr>
         <th>階層</th>
         <th>系1</th>
         <th>系2</th>
-        <th>HP</th>
-        <th>攻撃</th>
-        <th>防御</th>
         <th>EXP</th>
-        <th>Lv</th>
-        <th>限Lv</th>
-        <th>回復</th>
-        <th>成長</th>
         <th>ドロ率</th>
-        <th>修正値</th>
+        <th>最大被ダメ</th>
       </tr>
         <tr>
           <td>{{ MonsterData.floor }}F</td>
           <td>{{ MonsterData.type1 }}</td>
           <td>{{ MonsterData.type2 }}</td>
-          <td class="monsterList__table--number">{{ displayHP }}</td>
-          <td class="monsterList__table--number">{{ displayATK }}</td>
-          <td class="monsterList__table--number">{{ displayDEF }}</td>
-          <td class="monsterList__table--number">{{ MonsterData.exp }}</td>
-          <td class="monsterList__table--number">{{ displayLevel }}</td>
-          <td class="monsterList__table--number">{{ MonsterData.maxLevel }}</td>
-          <td class="monsterList__table--number">{{ MonsterData.heal }}</td>
-          <td>{{ MonsterData.growth }}</td>
-          <td class="monsterList__table--number">{{ MonsterData.drop }}%</td>
-          <td class="monsterList__table--number">{{ MonsterData.correction }}</td>
+          <td class="monsterDetail__table--number">{{ MonsterData.exp }}</td>
+          <td class="monsterDetail__table--number">{{ MonsterData.drop }}%</td>
+          <td>{{ maxDamage }}</td>
         </tr>
     </table>
-  </div>
+
+    <router-link to="/monster">
+      <div>
+        モンスター一覧に戻る
+      </div>
+    </router-link>  </div>
 </template>
 
 <script>
@@ -68,24 +91,6 @@ export default {
 
   data() {
     return {
-      dataCollection: {
-        labels: [
-          'HP',
-          '攻撃力',
-          '防御力'
-        ],
-        datasets: [{
-          label: 'Lv ' + 1 + ' (経験値: ' + 0 + ')',
-          data: [0, 0, 0],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgb(255, 99, 132)',
-          pointBackgroundColor: 'rgb(255, 99, 132)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }]
-      },
-      options: null,
       displayLevel: 1
     }
   },
@@ -112,38 +117,7 @@ export default {
         pointHoverBorderColor: 'rgb(255, 99, 132)'
       }]
     }
-
-    const options = {
-      responsive: true,
-      elements: {
-          line: {
-              borderWidth: 2
-          }
-      },
-      scales: {
-        r: {
-          min: 0,
-          max: 100,
-          ticks: {
-            display: false
-          },
-          backgroundColor: 'rgb(80, 80, 90)',
-          pointLabels: {
-            color: 'rgb(200, 200, 200)',
-          },
-        }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: 'rgb(200, 200, 200)'
-          }
-        }
-      }
-    }
-
     this.dataCollection = chartData
-    this.options = options
   },
 
   computed: {
@@ -170,6 +144,24 @@ export default {
     displayDEF() {
       const param = this.MonsterData.deffense + this.growthPattern[this.displayLevel][2] - this.growthPattern[this.MonsterData.level][2]
       return param
+    },
+
+    chartParam() {
+      const param = {
+        status: [
+          this.displayHP / 150 * 100,
+          this.displayATK / 65 * 100,
+          this.displayDEF / 58 * 100
+        ],
+        level: this.displayLevel,
+        exp: this.growthPattern[this.displayLevel][3]
+      }
+
+      return param
+    },
+
+    maxDamage() {
+      return Math.round(this.displayATK * 1.4625)
     }
 
   },

@@ -6,6 +6,10 @@
   text-align: right;
 }
 
+.monsterList__table--name {
+  color: #4388dc;
+}
+
 .monsterList__table {
   border-collapse: collapse;
   font-size: 12px;
@@ -21,9 +25,11 @@
 
 .monsterList__table td {
   background-color: #1c2128;
+  color: white;
 }
 .monsterList__table th {
   color: #2d333b;
   background-color: #4388dc;
   text-align: center;
 }
+

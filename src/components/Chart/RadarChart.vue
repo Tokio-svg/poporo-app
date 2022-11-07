@@ -30,14 +30,67 @@ ChartJS.register(
 
 export default {
   components: { Radar },
+  data(){
+    return {
+      chartOptions: {
+        responsive: true,
+        elements: {
+            line: {
+                borderWidth: 2
+            }
+        },
+        scales: {
+          r: {
+            min: 0,
+            max: 100,
+            ticks: {
+              display: false
+            },
+            backgroundColor: 'rgb(80, 80, 90)',
+            pointLabels: {
+              color: 'rgb(200, 200, 200)',
+            },
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: 'rgb(200, 200, 200)'
+            }
+          }
+        }
+      }
+    }
+  },
+
   props: {
-    chartData: {
+    chartParam: {
         type: Object,
         required: true
-      },
-    chartOptions: {
-      type: Object,
-      default: () => {}
+      }
+  },
+
+  computed: {
+    chartData() {
+      const data = {
+        labels: [
+          'HP',
+          '攻撃力',
+          '防御力'
+        ],
+        datasets: [{
+          label: 'Lv ' + this.chartParam.level + ' (経験値: ' + this.chartParam.exp + ')',
+          data: this.chartParam.status,
+          fill: true,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgb(255, 99, 132)',
+          pointBackgroundColor: 'rgb(255, 99, 132)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }]
+      }
+      return data
     }
   }
 }
