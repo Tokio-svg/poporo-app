@@ -7,16 +7,24 @@
 }
 
 .itemList__table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 12px;
   margin: 10px auto;
   text-align: center;
+  width: fit-content;
+  height: calc(100vh - 80px);
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .itemList__table th,
 .itemList__table td {
   border: 1px solid white;
   padding: 3px 8px;
+  border-bottom: none;
+  border-right: none;
 }
 
 .itemList__table td {
@@ -27,4 +35,6 @@
   background-color: #4388dc;
   text-align: center;
   cursor: pointer;
+  position: sticky;
+  top: 0;
 }

@@ -74,7 +74,7 @@ import MonsterData from '@/const/monsterData'
 import PatternData from '@/const/growthPattern'
 import RadarChart from '@/components/Chart/RadarChart.vue'
 
-const patternList = {
+const PATTERN_LIST = {
   '普通早熟': 'normalPrecocious',
   '攻撃早熟': 'attackPrecocious',
   '防御早熟': 'defensePrecocious',
@@ -128,7 +128,7 @@ export default {
     },
 
     growthPattern() {
-      return PatternData[patternList[this.MonsterData.growth]]
+      return PatternData[PATTERN_LIST[this.MonsterData.growth]]
     },
 
     displayHP() {

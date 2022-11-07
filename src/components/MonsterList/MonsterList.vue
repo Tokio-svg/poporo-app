@@ -3,7 +3,7 @@
     <table class="monsterList__table">
       <tr>
         <th>名前</th>
-        <th>階層</th>
+        <!-- <th>階層</th> -->
         <th>系1</th>
         <th>系2</th>
         <th>HP</th>
@@ -23,7 +23,7 @@
                 :to="{ name: 'monster_detail', params: { id: monster.id }}"
                 class="monsterList__table--name">
                 {{ monster.name }}</router-link></td>
-          <td>{{ monster.floor }}F</td>
+          <!-- <td>{{ monster.floor }}F</td> -->
           <td>{{ monster.type1 }}</td>
           <td>{{ monster.type2 }}</td>
           <td class="monsterList__table--number">{{ monster.hp }}</td>

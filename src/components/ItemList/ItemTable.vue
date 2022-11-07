@@ -30,22 +30,23 @@
 </template>
 
 <script>
+const SORT_OBJ = {
+  '名前':   'id',
+  '買値':   'buyingPrice',
+  '売値':   'sellingPrice',
+  '床':     'drop',
+  '店':     'shop',
+  '変化':   'change',
+  '印数':   'slot',
+  '印':     'slotName',
+  '優先順': 'slotPriority'
+}
+
 export default {
   data() {
     return {
       displayHeader: this.tableData.header,
       displayData: this.tableData.data,
-      sortObj: {
-        '名前':   'id',
-        '買値':   'buyingPrice',
-        '売値':   'sellingPrice',
-        '床':     'drop',
-        '店':     'shop',
-        '変化':   'change',
-        '印数':   'slot',
-        '印':     'slotName',
-        '優先順': 'slotPriority'
-      },
       sortStat: {
         header: null,
         order: null
@@ -71,16 +72,16 @@ export default {
       if (this.sortStat.header !== str || this.sortStat.order !== 'asc') {
         // 昇順
         newData = obj.data.sort((a,b)=> {
-          if(a[this.sortObj[str]] < b[this.sortObj[str]]) return -1;
-          if(a[this.sortObj[str]] > b[this.sortObj[str]]) return 1;
+          if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return -1;
+          if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return 1;
           return 0;
         })
         this.sortStat.order = 'asc'
       } else if (this.sortStat.header === str && this.sortStat.order !== 'desc') {
         // 降順
         newData = obj.data.sort((a,b)=> {
-          if(a[this.sortObj[str]] > b[this.sortObj[str]]) return -1;
-          if(a[this.sortObj[str]] < b[this.sortObj[str]]) return 1;
+          if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return -1;
+          if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return 1;
           return 0;
         })
         this.sortStat.order = 'desc'

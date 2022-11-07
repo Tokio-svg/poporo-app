@@ -11,3 +11,21 @@
   padding-left: 180px;
   background-color: #2d333b;
 }
+
+/* スクロールバーカスタマイズ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #394f6b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #359298;
+  transition: 0.8s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #49adb4;
+}
