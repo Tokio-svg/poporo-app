@@ -2,7 +2,6 @@
   background-color: #1c2128;
   min-height: 100vh;
   width: 180px;
-  border-right: 1px solid #55dc43;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,14 +9,29 @@
 
 .sidebar__button {
   text-align: center;
-  padding: 15px 0;
-  border: 1px solid #55dc43;
+  cursor: pointer;
+  height: 60px;
 }
 
-.sidebar__button:hover {
-  background-color: #2f363f;
+.sidebar__button--link {
+  border: 1px solid #55dc43;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+}
+
+.sidebar__button--link:hover {
+  background-color: #2d333b;
 }
 
 .button__active {
   color: aqua;
+  border-right: none;
+  background-color: #2d333b;
+}
+
+.sidebar__blank {
+  height: calc(100vh - 180px);
+  border-right: 1px solid #55dc43;
 }

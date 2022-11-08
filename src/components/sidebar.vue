@@ -1,23 +1,25 @@
 <template>
   <div class="sidebar__container">
 
-    <router-link to="/monster_table" active-class="button__active">
-      <div class="sidebar__button">
+    <div class="sidebar__button">
+      <router-link to="/monster_table" active-class="button__active" class="sidebar__button--link">
         モンスター出現テーブル
-      </div>
-    </router-link>
+      </router-link>
+    </div>
 
-    <router-link to="/monster" active-class="button__active">
-      <div class="sidebar__button">
+    <div class="sidebar__button">
+      <router-link to="/monster" active-class="button__active" class="sidebar__button--link">
         モンスター一覧
-      </div>
-    </router-link>
+      </router-link>
+    </div>
 
-    <router-link to="/item" active-class="button__active">
-      <div class="sidebar__button">
+    <div class="sidebar__button">
+      <router-link to="/item" active-class="button__active" class="sidebar__button--link">
         アイテムリスト
-      </div>
-    </router-link>
+      </router-link>
+    </div>
+
+    <div class="sidebar__blank"></div>
 
   </div>
 </template>

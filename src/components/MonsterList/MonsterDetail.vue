@@ -49,7 +49,7 @@
         <th>系1</th>
         <th>系2</th>
         <th>EXP</th>
-        <th>ドロ率</th>
+        <th>ドロップ率</th>
         <th>最大被ダメ</th>
       </tr>
         <tr>
@@ -62,11 +62,10 @@
         </tr>
     </table>
 
-    <router-link to="/monster">
-      <div>
+    <router-link to="/monster" class="monsterDetail__back">
         モンスター一覧に戻る
-      </div>
-    </router-link>  </div>
+    </router-link>
+  </div>
 </template>
 
 <script>

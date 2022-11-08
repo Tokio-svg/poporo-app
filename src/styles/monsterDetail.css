@@ -7,7 +7,7 @@
 
 .monsterDetail__chart--container {
   width: 200px;
-  margin: 0 auto;
+  margin: -10px auto 0;
 }
 
 .controlPanel {
@@ -51,7 +51,7 @@
   border-radius: 3px;
   padding: 5px;
   margin: 0 2px;
-  color: #55dc43;
+  color: yellow;
 }
 
 .monsterDetail__table--container {
@@ -72,7 +72,7 @@
 .monsterDetail__table th,
 .monsterDetail__table td {
   border: 1px solid white;
-  padding: 3px 5px;
+  padding: 2px 5px;
 }
 
 .monsterDetail__table td {
@@ -83,4 +83,20 @@
   color: #2d333b;
   background-color: #4388dc;
   text-align: center;
+}
+
+.monsterDetail__back {
+  display: block;
+  width: 230px;
+  margin: 20px auto 0;
+  text-align: center;
+  color: #1c2128;
+  background-color: #55dc43;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.monsterDetail__back:hover {
+  background-color: #2b9d1b;
 }

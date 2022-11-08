@@ -1,21 +1,25 @@
 <template>
   <div>
     <div class="itemList__header">
-      <div class="itemList__header--button" @click="changeData('ring')" :class="{ button__active: select === 'ring' }">
+      <div class="itemList__header--blank"></div>
+
+      <div class="itemList__header--button" @click="changeData('ring')" :class="{ 'button__active--item': select === 'ring' }">
         指輪
       </div>
-      <div class="itemList__header--button" @click="changeData('weed')" :class="{ button__active: select === 'weed' }">
+      <div class="itemList__header--button" @click="changeData('weed')" :class="{ 'button__active--item': select === 'weed' }">
         草
       </div>
-      <div class="itemList__header--button" @click="changeData('scroll')" :class="{ button__active: select === 'scroll' }">
+      <div class="itemList__header--button" @click="changeData('scroll')" :class="{ 'button__active--item': select === 'scroll' }">
         巻物
       </div>
-      <div class="itemList__header--button" @click="changeData('cane')" :class="{ button__active: select === 'cane' }">
+      <div class="itemList__header--button" @click="changeData('cane')" :class="{ 'button__active--item': select === 'cane' }">
         杖
       </div>
-      <div class="itemList__header--button" @click="changeData('pot')" :class="{ button__active: select === 'pot' }">
+      <div class="itemList__header--button" @click="changeData('pot')" :class="{ 'button__active--item': select === 'pot' }">
         壺
       </div>
+
+      <div class="itemList__header--blank"></div>
     </div>
     <item-table :table-data="tableData" />
   </div>

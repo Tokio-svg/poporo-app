@@ -11,8 +11,10 @@
   background-color: #2f363f;
 }
 
-.button__active {
+.button__active--item {
   color: aqua;
+  border-bottom: none;
+  background-color: #2d333b;
 }
 
 .itemList__header {
@@ -23,4 +25,9 @@
   position: fixed;
   top: 0;
   left: 180px;
+}
+
+.itemList__header--blank {
+  width: calc((100% - 680px)/2);
+  border-bottom: 1px solid #55dc43;
 }
