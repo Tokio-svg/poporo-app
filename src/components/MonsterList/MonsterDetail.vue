@@ -12,7 +12,7 @@
       <div>レベルコントロールパネル</div>
       <button @click="changeLevel(-10)" class="button__level">-10</button>
       <button @click="changeLevel(-1)" class="button__level">-1</button>
-      <div class="displayLevel">{{displayLevel}}</div>
+      <div class="displayLevel" :class="{'isMaxLevel': isMaxLevel}">{{displayLevel}}</div>
       <button @click="changeLevel(1)" class="button__level">+1</button>
       <button @click="changeLevel(10)" class="button__level">+10</button>
       <div>
@@ -62,9 +62,9 @@
         </tr>
     </table>
 
-    <router-link :to="backLink" class="monsterDetail__back">
-        モンスター一覧に戻る
-    </router-link>
+    <div @click="linkToBack" class="monsterDetail__back">
+      前の画面に戻る
+    </div>
   </div>
 </template>
 
@@ -166,11 +166,8 @@ export default {
       return Math.round(this.displayATK * 1.4625)
     },
 
-    backLink() {
-      let path = null
-      if (this.$route.name === 'monster_detail') path = '/monster'
-        else path = '/monster_gba'
-      return path
+    isMaxLevel() {
+      return this.displayLevel === this.MonsterData.maxLevel
     }
 
   },
@@ -186,6 +183,10 @@ export default {
 
     resetLevel() {
       this.displayLevel = this.MonsterData.level
+    },
+
+    linkToBack() {
+      this.$router.go(-1)
     }
   }
 }

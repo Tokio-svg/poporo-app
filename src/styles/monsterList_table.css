@@ -8,6 +8,9 @@
 
 .monsterList__table--name {
   color: #4388dc;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .monsterList__table {
@@ -35,6 +38,10 @@
   color: rgb(226, 226, 226);
 }
 
+.monsterList__table tr td :first-child:hover {
+  background-color: #403c57;
+}
+
 .monsterList__table tr:nth-child(2n-1) {
   background-color: #1c2128;
 }
@@ -49,4 +56,5 @@
   text-align: center;
   position: sticky;
   top: 0;
+  cursor: pointer;
 }
