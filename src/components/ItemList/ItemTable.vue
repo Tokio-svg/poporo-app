@@ -12,7 +12,7 @@
       </tr>
       <template v-for="item in displayData" :key="item.id">
         <tr>
-          <td>{{item.name}}</td>
+          <td class="itemList__table--name">{{item.name}}</td>
           <template v-if="item.hasOwnProperty('slot')">
             <td>{{item.slot}}</td>
             <td>{{item.slotName}}</td>

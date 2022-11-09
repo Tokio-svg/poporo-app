@@ -4,7 +4,7 @@
 
 <script>
 import MonsterTable from '@/components/MonsterList/MonsterListTable.vue'
-import MonsterData from '@/const/monsterData'
+import MonsterDataGBA from '@/const/monsterDataGBA'
 
 export default {
   components: {
@@ -13,7 +13,7 @@ export default {
 
   computed: {
     MonsterData() {
-      return MonsterData.monsterData
+      return MonsterDataGBA.monsterDataGBA
     }
   }
 }

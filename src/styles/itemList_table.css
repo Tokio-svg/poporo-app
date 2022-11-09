@@ -6,6 +6,10 @@
   text-align: right;
 }
 
+.itemList__table--name {
+  color: #4388dc;
+}
+
 .itemList__table {
   border-collapse: separate;
   border-spacing: 0;
@@ -29,6 +33,7 @@
 
 .itemList__table td {
   background-color: #1c2128;
+  color: rgb(226, 226, 226);
 }
 .itemList__table th {
   color: #2d333b;

@@ -62,7 +62,7 @@
         </tr>
     </table>
 
-    <router-link to="/monster" class="monsterDetail__back">
+    <router-link :to="backLink" class="monsterDetail__back">
         モンスター一覧に戻る
     </router-link>
   </div>
@@ -70,6 +70,7 @@
 
 <script>
 import MonsterData from '@/const/monsterData'
+import MonsterDataGBA from '@/const/monsterDataGBA'
 import PatternData from '@/const/growthPattern'
 import RadarChart from '@/components/Chart/RadarChart.vue'
 
@@ -80,7 +81,8 @@ const PATTERN_LIST = {
   '攻撃晩成': 'attackLateGrowth',
   '防御晩成': 'defenseLateGrowth',
   '万能晩成': 'versatileLateGrowth',
-  '守備特殊': 'defenseSpecial'
+  '守備特殊': 'defenseSpecial',
+  '攻撃特殊': 'attackSpecial'
 }
 
 export default {
@@ -122,7 +124,8 @@ export default {
   computed: {
     MonsterData() {
       const id = parseInt(this.$route.params.id)
-      const targetData = MonsterData.monsterData.find((v) => v.id === id)
+      const allMonsterDataArray = MonsterData.monsterData.concat(MonsterDataGBA.monsterDataGBA)
+      const targetData = allMonsterDataArray.find((v) => v.id === id)
       return targetData
     },
 
@@ -161,6 +164,13 @@ export default {
 
     maxDamage() {
       return Math.round(this.displayATK * 1.4625)
+    },
+
+    backLink() {
+      let path = null
+      if (this.$route.name === 'monster_detail') path = '/monster'
+        else path = '/monster_gba'
+      return path
     }
 
   },

@@ -33,7 +33,7 @@
 
 .monsterList__table td {
   background-color: #1c2128;
-  color: white;
+  color: rgb(226, 226, 226);
 }
 
 .monsterList__table th {

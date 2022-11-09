@@ -25,9 +25,27 @@ const routes = [
             path: '/monster',
             name: 'monster_list',
             component: () => import('@/components/MonsterList/MonsterList.vue')
-          },          {
+          },
+          {
             path: '/monster/detail/:id',
             name: 'monster_detail',
+            component: () => import('@/components/MonsterList/MonsterDetail.vue')
+          },
+        ]
+      },
+      {
+        path: '/monster_gbs',
+        name: 'monster_list_gba_container',
+        component: () => import('@/components/MonsterList/MonsterListContainer.vue'),
+        children: [
+          {
+            path: '/monster_gba',
+            name: 'monster_list_gba',
+            component: () => import('@/components/MonsterList/MonsterListGBA.vue')
+          },
+          {
+            path: '/monster_gba/detail/:id',
+            name: 'monster_detail_gba',
             component: () => import('@/components/MonsterList/MonsterDetail.vue')
           },
         ]
