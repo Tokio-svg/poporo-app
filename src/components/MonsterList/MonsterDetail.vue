@@ -144,7 +144,7 @@ export default {
     },
 
     displayDEF() {
-      const param = this.MonsterData.deffense + this.growthPattern[this.displayLevel][2] - this.growthPattern[this.MonsterData.level][2]
+      const param = this.MonsterData.defense + this.growthPattern[this.displayLevel][2] - this.growthPattern[this.MonsterData.level][2]
       return param
     },
 
