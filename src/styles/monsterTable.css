@@ -1,0 +1,25 @@
+.monsterTable {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.monsterTable th,
+.monsterTable td {
+  border: 1px solid white;
+}
+
+.monsterTable td {
+  width: 1em;
+  text-align: center;
+  min-width: 40px;
+  height: 20px;
+  font-size: 12px;
+  padding: 10px 10px;
+  line-height: 1.2em;
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  white-space: nowrap;
+}

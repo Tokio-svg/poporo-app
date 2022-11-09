@@ -28,8 +28,15 @@
 }
 
 .itemList__table td {
-  background-color: #1c2128;
   color: rgb(226, 226, 226);
+}
+
+.itemList__table tr:nth-child(2n-1) {
+  background-color: #1c2128;
+}
+
+.itemList__table tr:nth-child(2n) {
+  background-color: #13373a;
 }
 
 .itemList__table th {
