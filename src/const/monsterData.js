@@ -406,7 +406,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       0,
-      correction: 100
+      correction: 100,
+      gbaId:      24
     },
     {
       id:         24,
@@ -423,7 +424,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       0,
-      correction: 100
+      correction: 100,
+      ps2Id:      23
     },
     {
       id:         25,
@@ -1205,7 +1207,8 @@ export default {
       heal:       50,
       growth:     '攻撃晩成',
       drop:       0,
-      correction: 100
+      correction: 100,
+      gbaId:      71
     },
     {
       id:         71,
@@ -1222,7 +1225,8 @@ export default {
       heal:       50,
       growth:     '攻撃晩成',
       drop:       0,
-      correction: 100
+      correction: 100,
+      ps2Id:      70
     },
     {
       id:         72,
@@ -1443,7 +1447,8 @@ export default {
       heal:       50,
       growth:     '万能晩成',
       drop:       5,
-      correction: 100
+      correction: 100,
+      gbaId:      85
     },
     {
       id:         85,
@@ -1460,7 +1465,8 @@ export default {
       heal:       50,
       growth:     '万能晩成',
       drop:       5,
-      correction: 100
+      correction: 100,
+      ps2Id:      84
     },
     {
       id:         86,
@@ -1511,7 +1517,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       8,
-      correction: 100
+      correction: 100,
+      gbaId:      89
     },
     {
       id:         89,
@@ -1528,7 +1535,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       8,
-      correction: 100
+      correction: 100,
+      gbaId:      88
     },
     {
       id:         90,
@@ -1988,6 +1996,23 @@ export default {
       growth:     '攻撃晩成',
       drop:       0,
       correction: 1
+    },
+    {
+      id:         180,
+      name:       'ガーゴイル',
+      floor:      '3~99',
+      type1:      '浮',
+      type2:      '剣',
+      hp:         200,
+      attack:     180,
+      defense:    150,
+      exp:        1,
+      level:      1,
+      maxLevel:   99,
+      heal:       100,
+      growth:     '防御晩成',
+      drop:       0,
+      correction: -200
     }
   ]
 }

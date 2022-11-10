@@ -65,6 +65,19 @@
     <div @click="linkToBack" class="monsterDetail__back">
       前の画面に戻る
     </div>
+
+    <template v-if="MonsterData.hasOwnProperty('gbaId')">
+      <div @click="linkToAnother(MonsterData.gbaId)" class="monsterDetail__link-another">
+        GBA版に移動
+      </div>
+    </template>
+
+    <template v-if="MonsterData.hasOwnProperty('ps2Id')">
+      <div @click="linkToAnother(MonsterData.ps2Id)" class="monsterDetail__link-another">
+        PS2版に移動
+      </div>
+    </template>
+
   </div>
 </template>
 
@@ -187,6 +200,10 @@ export default {
 
     linkToBack() {
       this.$router.go(-1)
+    },
+
+    linkToAnother(id) {
+      this.$router.push({ name:'monster_detail', params: { id: id } })
     }
   }
 }

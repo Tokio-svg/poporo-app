@@ -1,4 +1,4 @@
-.monsterTable--container {
+.monsterTable__container {
   padding-top: 20px;
 }
 
@@ -11,6 +11,7 @@
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-color: #1c2128;
 }
 
 .monsterTable th,
@@ -28,7 +29,6 @@
   height: 20px;
   padding: 10px 10px;
   line-height: 1.2em;
-  background-color: #1c2128;
 }
 
 .tb-vertical {
@@ -49,4 +49,11 @@
   text-align: center;
   position: sticky;
   top: 0;
+}
+
+.monsterTable__cell {
+  cursor: pointer;
+  color: #1c2128;
+  background-color: #aeaeae;
+  font-weight: bold;
 }

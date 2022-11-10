@@ -528,6 +528,23 @@ export default {
       correction: 1
     },
     {
+      id:         179,
+      name:       'ちゅうまじゅう',
+      floor:      '?',
+      type1:      '',
+      type2:      '',
+      hp:         25,
+      attack:     11,
+      defense:    11,
+      exp:        17,
+      level:      1,
+      maxLevel:   99,
+      heal:       50,
+      growth:     '防御早熟',
+      drop:       '?',
+      correction: 100
+    },
+    {
       id:         148,
       name:       'つかいま',
       floor:      '?',

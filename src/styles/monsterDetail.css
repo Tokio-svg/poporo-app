@@ -95,7 +95,7 @@
   margin: 20px auto 0;
   text-align: center;
   color: #1c2128;
-  background-color: #55dc43;
+  background-color: #2b9d1b;
   font-size: 11px;
   font-weight: bold;
   border-radius: 3px;
@@ -103,5 +103,22 @@
 }
 
 .monsterDetail__back:hover {
-  background-color: #2b9d1b;
+  background-color: #55dc43;
+}
+
+.monsterDetail__link-another {
+  display: block;
+  width: 230px;
+  margin: 20px auto 0;
+  text-align: center;
+  color: #1c2128;
+  background-color: #dc4343;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.monsterDetail__link-another:hover {
+  background-color: #f35757;
 }
