@@ -12,7 +12,17 @@
 
 .controlPanel {
   text-align: center;
-  margin: -10px 0 10px;
+  margin: -10px auto 10px;
+  background-color: #1c2128;
+  width: fit-content;
+  padding: 5px 10px 10px 10px;
+  border-radius: 3px;
+}
+
+.controlPanel__label {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 0;
 }
 
 .button__level {
@@ -27,7 +37,8 @@
 }
 
 .button__level:hover {
-  background-color: rgb(202, 215, 226);
+  background-color: rgb(255, 255, 55);
+  transition: 0.3s;
 }
 
 .button__reset {
@@ -42,6 +53,7 @@
 
 .button__reset:hover {
   background-color: #62a2ef;
+  transition: 0.3s;
 }
 
 .displayLevel {
@@ -104,6 +116,7 @@
 
 .monsterDetail__back:hover {
   background-color: #55dc43;
+  transition: 0.3s;
 }
 
 .monsterDetail__link-another {
@@ -121,4 +134,5 @@
 
 .monsterDetail__link-another:hover {
   background-color: #f35757;
+  transition: 0.3s;
 }

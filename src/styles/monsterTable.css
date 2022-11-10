@@ -43,6 +43,12 @@
   font-weight: bold;
 }
 
+.monsterTable tr td:not(:first-child) {
+  border: 2px solid black;
+  border-bottom: none;
+  border-right: none;
+}
+
 .monsterTable th {
   color: #2d333b;
   background-color: #4388dc;
@@ -56,4 +62,9 @@
   color: #1c2128;
   background-color: #aeaeae;
   font-weight: bold;
+}
+
+.monsterTable__cell:hover {
+  background-color: #ffffff;
+  transition: 0.3s;
 }

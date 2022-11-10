@@ -9,6 +9,7 @@
 
 .itemList__header--button:hover {
   background-color: #2f363f;
+  transition: 0.3s;
 }
 
 .button__active--item {

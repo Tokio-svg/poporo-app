@@ -11,6 +11,12 @@
   display: block;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+}
+
+.monsterList__table--name:hover {
+  background-color: #403c57;
+  transition: 0.3s;
 }
 
 .monsterList__table {
@@ -34,13 +40,10 @@
   border-right: none;
 }
 
-.monsterList__table td {
+.monsterList__table tr td:not(:first-child) {
   color: rgb(226, 226, 226);
 }
 
-.monsterList__table tr td :first-child:hover {
-  background-color: #403c57;
-}
 
 .monsterList__table tr:nth-child(2n-1) {
   background-color: #1c2128;
@@ -57,4 +60,8 @@
   position: sticky;
   top: 0;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

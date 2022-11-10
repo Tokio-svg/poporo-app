@@ -12,10 +12,11 @@
       </tr>
       <template v-for="monster in displayData" :key="monster.id">
         <tr>
-          <td><router-link
+          <!-- <td><router-link
                 :to="{ name: linkName, params: { id: monster.id }}"
                 class="monsterList__table--name">
-                {{ monster.name }}</router-link></td>
+                {{ monster.name }}</router-link></td> -->
+          <td @click="linkToDetail(monster.id)" class="monsterList__table--name">{{ monster.name }}</td>
           <!-- <td>{{ monster.floor }}F</td> -->
           <td>{{ monster.type1 }}</td>
           <td>{{ monster.type2 }}</td>
@@ -98,6 +99,9 @@ export default {
       }
       this.sortStat.header = str
       this.displayData = newData
+    },
+    linkToDetail(id) {
+      this.$router.push({ name: this.linkName, params: { id: id } })
     }
   },
 

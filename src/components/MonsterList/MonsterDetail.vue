@@ -9,7 +9,7 @@
     </div>
 
     <div class="controlPanel">
-      <div>レベルコントロールパネル</div>
+      <div class="controlPanel__label">レベルコントロールパネル</div>
       <button @click="changeLevel(-10)" class="button__level">-10</button>
       <button @click="changeLevel(-1)" class="button__level">-1</button>
       <div class="displayLevel" :class="{'isMaxLevel': isMaxLevel}">{{displayLevel}}</div>
@@ -111,27 +111,6 @@ export default {
 
   mounted() {
     this.displayLevel = this.MonsterData.level
-
-    // チャート用データ(仮)
-    const chartData = {
-      labels: [
-        'HP',
-        '攻撃力',
-        '防御力'
-      ],
-      datasets: [{
-        label: 'Lv ' + 1 + ' (経験値: ' + 0 + ')',
-        data: [50, 50, 50],
-        fill: true,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgb(255, 99, 132)',
-        pointBackgroundColor: 'rgb(255, 99, 132)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(255, 99, 132)'
-      }]
-    }
-    this.dataCollection = chartData
   },
 
   computed: {

@@ -23,6 +23,7 @@
 
 .sidebar__button--link:hover {
   background-color: #2d333b;
+  transition: 0.3s;
 }
 
 .button__active {
