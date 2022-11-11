@@ -39,7 +39,11 @@
         <td class="monsterDetail__table--number">{{ displayDEF }}</td>
         <td class="monsterDetail__table--number">{{ MonsterData.heal }}</td>
         <td>{{ MonsterData.growth }}</td>
-        <td class="monsterDetail__table--number">{{ MonsterData.correction }}</td>
+        <td class="monsterDetail__table--number">
+          <span :class="{'red': MonsterData.correction < -149}">
+            {{ MonsterData.correction }}
+          </span>
+        </td>
       </tr>
     </table>
 
@@ -58,7 +62,12 @@
           <td>{{ MonsterData.type2 }}</td>
           <td class="monsterDetail__table--number">{{ MonsterData.exp }}</td>
           <td class="monsterDetail__table--number">{{ MonsterData.drop }}%</td>
-          <td>{{ maxDamage }}</td>
+          <td>
+            {{ maxDamage }}
+            <span v-if="MonsterData.hasOwnProperty('skillDamage')">
+              ({{ Math.round(maxDamage * MonsterData.skillDamage) }})
+            </span>
+          </td>
         </tr>
     </table>
 

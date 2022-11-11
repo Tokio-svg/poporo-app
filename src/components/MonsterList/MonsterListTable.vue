@@ -12,10 +12,6 @@
       </tr>
       <template v-for="monster in displayData" :key="monster.id">
         <tr>
-          <!-- <td><router-link
-                :to="{ name: linkName, params: { id: monster.id }}"
-                class="monsterList__table--name">
-                {{ monster.name }}</router-link></td> -->
           <td @click="linkToDetail(monster.id)" class="monsterList__table--name">{{ monster.name }}</td>
           <!-- <td>{{ monster.floor }}F</td> -->
           <td>{{ monster.type1 }}</td>
@@ -29,7 +25,11 @@
           <td class="monsterList__table--number">{{ monster.heal }}</td>
           <td>{{ monster.growth }}</td>
           <td class="monsterList__table--number">{{ monster.drop }}%</td>
-          <td class="monsterList__table--number">{{ monster.correction }}</td>
+          <td class="monsterList__table--number">
+            <span :class="{'red': monster.correction < -149}">
+              {{ monster.correction }}
+            </span>
+          </td>
         </tr>
       </template>
     </table>

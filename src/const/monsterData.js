@@ -117,7 +117,8 @@ export default {
       heal:       50,
       growth:     '防御晩成',
       drop:       8,
-      correction: 1
+      correction: 1,
+      skillDamage: 1.5
     },
     {
       id:         7,
@@ -442,7 +443,8 @@ export default {
       heal:       100,
       growth:     '防御早熟',
       drop:       15,
-      correction: 100
+      correction: 100,
+      skillDamage: 2
     },
     {
       id:         26,
@@ -510,7 +512,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       3,
-      correction: 20
+      correction: 20,
+      skillDamage: 2
     },
     {
       id:         30,
@@ -527,7 +530,8 @@ export default {
       heal:       50,
       growth:     '攻撃早熟',
       drop:       0,
-      correction: 50
+      correction: 50,
+      skillDamage: 1.5
     },
     {
       id:         31,
@@ -544,7 +548,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       4,
-      correction: 100
+      correction: 100,
+      skillDamage: 2
     },
     {
       id:         32,
@@ -595,7 +600,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       0,
-      correction: 40
+      correction: 40,
+      skillDamage: 2
     },
     {
       id:         35,
@@ -731,7 +737,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       15,
-      correction: 100
+      correction: 100,
+      skillDamage: 1.5
     },
     {
       id:         43,
@@ -1277,7 +1284,8 @@ export default {
       heal:       100,
       growth:     '攻撃早熟',
       drop:       12,
-      correction: 10
+      correction: 10,
+      skillDamage: 1.5
     },
     {
       id:         75,
@@ -1294,7 +1302,8 @@ export default {
       heal:       50,
       growth:     '防御晩成',
       drop:       0,
-      correction: 40
+      correction: 40,
+      skillDamage: 1.5
     },
     {
       id:         76,
@@ -1311,7 +1320,8 @@ export default {
       heal:       50,
       growth:     '攻撃晩成',
       drop:       3,
-      correction: 100
+      correction: 100,
+      skillDamage: 1.5
     },
     {
       id:         77,
@@ -1396,7 +1406,8 @@ export default {
       heal:       100,
       growth:     '万能晩成',
       drop:       0,
-      correction: 100
+      correction: 100,
+      skillDamage: 1.5
     },
     {
       id:         82,
@@ -1413,7 +1424,8 @@ export default {
       heal:       50,
       growth:     '防御晩成',
       drop:       0,
-      correction: 40
+      correction: 40,
+      skillDamage: 1.5
     },
     {
       id:         83,
@@ -1500,7 +1512,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       25,
-      correction: 10
+      correction: 10,
+      skillDamage: 2
     },
     {
       id:         88,
@@ -1910,7 +1923,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       0,
-      correction: 30
+      correction: 30,
+      skillDamage: 1.5
     },
     {
       id:         112,
@@ -2012,7 +2026,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       0,
-      correction: -200
+      correction: -200,
+      skillDamage: 2
     }
   ]
 }

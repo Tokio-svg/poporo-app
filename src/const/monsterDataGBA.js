@@ -83,7 +83,8 @@ export default {
       heal:       100,
       growth:     '攻撃特殊',
       drop:       '?',
-      correction: -208
+      correction: -208,
+      skillDamage: 1.5
     },
     {
       id:         122,
@@ -168,7 +169,8 @@ export default {
       heal:       100,
       growth:     '防御早熟',
       drop:       '?',
-      correction: 100
+      correction: 100,
+      skillDamage: 2
     },
     {
       id:         127,
@@ -287,7 +289,8 @@ export default {
       heal:       100,
       growth:     '攻撃特殊',
       drop:       '?',
-      correction: -108
+      correction: -108,
+      skillDamage: 1.5
     },
     {
       id:         134,
@@ -355,7 +358,8 @@ export default {
       heal:       50,
       growth:     '攻撃晩成',
       drop:       '?',
-      correction: 50
+      correction: 50,
+      skillDamage: 1.5
     },
     {
       id:         138,
@@ -678,7 +682,8 @@ export default {
       heal:       100,
       growth:     '攻撃早熟',
       drop:       '?',
-      correction: 50
+      correction: 50,
+      skillDamage: 1.5
     },
     {
       id:         156,
@@ -712,7 +717,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       '?',
-      correction: 20
+      correction: 20,
+      skillDamage: 2
     },
     {
       id:         158,
@@ -729,7 +735,8 @@ export default {
       heal:       150,
       growth:     '防御晩成',
       drop:       '?',
-      correction: 100
+      correction: 100,
+      skillDamage: 2
     },
     {
       id:         159,
@@ -950,7 +957,8 @@ export default {
       heal:       100,
       growth:     '防御早熟',
       drop:       '?',
-      correction: 100
+      correction: 100,
+      skillDamage: 2
     },
     {
       id:         172,
@@ -1001,7 +1009,8 @@ export default {
       heal:       100,
       growth:     '防御晩成',
       drop:       '?',
-      correction: 30
+      correction: 30,
+      skillDamage: 3
     },
     {
       id:         175,
