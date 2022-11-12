@@ -28,7 +28,9 @@
       </router-link>
     </div>
 
-    <div class="sidebar__blank"></div>
+    <div class="sidebar__blank">
+      <button @click="modalOn">モーダル</button>
+    </div>
 
   </div>
 </template>
@@ -39,6 +41,12 @@ export default {
     isActiveDetailGBA() {
       if (this.$route.name === 'monster_detail_gba') return true
         else return false
+    }
+  },
+
+  methods: {
+    modalOn() {
+      this.$store.dispatch('modalOn')
     }
   }
 }

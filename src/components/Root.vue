@@ -9,15 +9,27 @@
     <main class="app-main">
       <router-view/>
     </main>
+
+    <transition name="fade" appear>
+      <modal-window v-if="modalIsActive"/>
+    </transition>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
+import Sidebar from '@/components/Sidebar'
+import ModalWindow from '@/components/Modal/ModalBase.vue'
 
 export default {
   components: {
-    Sidebar
+    Sidebar,
+    ModalWindow
+  },
+
+  computed: {
+    modalIsActive() {
+      return this.$store.state.isActive
+    }
   }
 }
 </script>

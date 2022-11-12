@@ -1,0 +1,25 @@
+.modal__container {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.modal__main {
+  background-color: blanchedalmond;
+  width: 700px;
+  height: 500px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal__header {
+  height: 50px;
+  background-color: aqua;
+}
