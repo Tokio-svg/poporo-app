@@ -4,17 +4,23 @@ export default createStore({
 
   state () {
     return {
-      isActive: false
+      modalIsActive: false,
+      modalData: {}
     }
   },
 
   mutations: {
     modalOn(state) {
-      state.isActive = true
+      state.modalIsActive = true
     },
 
     modalOff(state) {
-      state.isActive = false
+      state.modalIsActive = false
+    },
+
+    // dataは{component, param}のオブジェクト
+    setModalData(state, data) {
+      state.modalData = data
     }
   },
 
@@ -25,6 +31,10 @@ export default createStore({
 
     modalOff(context) {
       context.commit('modalOff')
+    },
+
+    setModalData(context, data) {
+      context.commit('setModalData', data)
     }
   }
 })

@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import TestModal from '@/components/Modal/TestModal.vue'
+
 export default {
   computed: {
     isActiveDetailGBA() {
@@ -46,6 +48,11 @@ export default {
 
   methods: {
     modalOn() {
+      const data = {
+        component: TestModal,
+        param: {test: '^q^'}
+      }
+      this.$store.dispatch('setModalData', data)
       this.$store.dispatch('modalOn')
     }
   }

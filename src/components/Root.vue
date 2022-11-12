@@ -28,7 +28,7 @@ export default {
 
   computed: {
     modalIsActive() {
-      return this.$store.state.isActive
+      return this.$store.state.modalIsActive
     }
   }
 }
