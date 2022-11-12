@@ -65,3 +65,8 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.monsterList__table th:hover {
+  background-color: #6ea7ed;
+  transition: 0.3s;
+}
