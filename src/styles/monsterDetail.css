@@ -104,7 +104,7 @@
 .monsterDetail__back {
   display: block;
   width: 230px;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   text-align: center;
   color: #1c2128;
   background-color: #2b9d1b;
@@ -122,7 +122,7 @@
 .monsterDetail__link-another {
   display: block;
   width: 230px;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   text-align: center;
   color: #1c2128;
   background-color: #dc4343;
@@ -134,5 +134,23 @@
 
 .monsterDetail__link-another:hover {
   background-color: #f35757;
+  transition: 0.3s;
+}
+
+.monsterDetail__calc {
+  display: block;
+  width: 230px;
+  margin: 10px auto 0;
+  text-align: center;
+  color: #1c2128;
+  background-color: #ffbd42;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.monsterDetail__calc:hover {
+  background-color: #ffe2ad;
   transition: 0.3s;
 }

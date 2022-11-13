@@ -1,10 +1,12 @@
 .itemList__header--button {
   text-align: center;
-  padding: 15px 0;
   border: 1px solid #55dc43;
   width: 100px;
   height: 100%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .itemList__header--button:hover {

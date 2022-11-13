@@ -71,6 +71,10 @@
         </tr>
     </table>
 
+    <div @click="modalOn" class="monsterDetail__calc">
+      ダメージ計算
+    </div>
+
     <div @click="linkToBack" class="monsterDetail__back">
       前の画面に戻る
     </div>
@@ -95,6 +99,7 @@ import MonsterData from '@/const/monsterData'
 import MonsterDataGBA from '@/const/monsterDataGBA'
 import PatternData from '@/const/growthPattern'
 import RadarChart from '@/components/Chart/RadarChart.vue'
+import CalcModal from '@/components/Modal/DamageCalcModal.vue'
 
 const PATTERN_LIST = {
   '普通早熟': 'normalPrecocious',
@@ -192,7 +197,23 @@ export default {
 
     linkToAnother(id) {
       this.$router.push({ name:'monster_detail', params: { id: id } })
+    },
+
+    modalOn() {
+      const data = {
+        component: CalcModal,
+        header: 'ダメージ計算',
+        param: {
+          name: this.MonsterData.name,
+          level: this.displayLevel,
+          hp: this.displayHP,
+          defense: this.displayDEF
+        }
+      }
+      this.$store.dispatch('setModalData', data)
+      this.$store.dispatch('modalOn')
     }
+
   }
 }
 </script>

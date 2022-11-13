@@ -2,7 +2,8 @@
   <div @click.self="modalOff" class="modal__container">
     <div class="modal__main">
       <div class="modal__header">
-        <button @click="modalOff">だいあろぐを閉じます</button>
+        <div class="modal__title">{{header}}</div>
+        <div @click="modalOff" class="modal__close">×</div>
       </div>
       <div class="modal__body">
         <component
@@ -22,6 +23,10 @@ export default {
 
     component() {
       return this.modalData.component
+    },
+
+    header() {
+      return this.modalData.header
     },
 
     param() {

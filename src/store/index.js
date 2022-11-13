@@ -18,7 +18,7 @@ export default createStore({
       state.modalIsActive = false
     },
 
-    // dataは{component, param}のオブジェクト
+    // dataは{component ,header , param}のオブジェクト
     setModalData(state, data) {
       state.modalData = data
     }

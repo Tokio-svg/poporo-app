@@ -19,14 +19,35 @@
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: default;
+  border: 5px solid #ffbd42;
+  border-radius: 8px;
 }
 
 .modal__header {
-  height: 50px;
-  background-color: aqua;
+  height: 40px;
+  background-color: #ffbd42;
+  display: flex;
+  align-items: center;
+}
+
+.modal__title {
+  font-size: 20px;
+  color: #2d333b;
+}
+
+.modal__close {
+  color: #2d333b;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 26px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  cursor: pointer;
+  margin: 5px 5px auto auto;
 }
 
 .modal__body {
-  background-color: brown;
   height: 450px;
 }

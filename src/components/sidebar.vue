@@ -28,15 +28,20 @@
       </router-link>
     </div>
 
+    <div class="sidebar__button">
+      <div class="sidebar__button--link calc-button" @click="modalOn">
+        ダメージ計算
+      </div>
+    </div>
+
     <div class="sidebar__blank">
-      <button @click="modalOn">モーダル</button>
     </div>
 
   </div>
 </template>
 
 <script>
-import TestModal from '@/components/Modal/TestModal.vue'
+import TestModal from '@/components/Modal/DamageCalcModal'
 
 export default {
   computed: {
@@ -50,7 +55,7 @@ export default {
     modalOn() {
       const data = {
         component: TestModal,
-        param: {test: '^q^'}
+        header: 'ダメージ計算',
       }
       this.$store.dispatch('setModalData', data)
       this.$store.dispatch('modalOn')
