@@ -42,6 +42,7 @@
 
 <script>
 import TestModal from '@/components/Modal/DamageCalcModal'
+import { markRaw } from "vue";
 
 export default {
   computed: {
@@ -54,7 +55,7 @@ export default {
   methods: {
     modalOn() {
       const data = {
-        component: TestModal,
+        component: markRaw(TestModal),
         header: 'ダメージ計算',
       }
       this.$store.dispatch('setModalData', data)

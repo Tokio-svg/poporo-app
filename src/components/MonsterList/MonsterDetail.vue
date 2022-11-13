@@ -100,6 +100,7 @@ import MonsterDataGBA from '@/const/monsterDataGBA'
 import PatternData from '@/const/growthPattern'
 import RadarChart from '@/components/Chart/RadarChart.vue'
 import CalcModal from '@/components/Modal/DamageCalcModal.vue'
+import { markRaw } from "vue";
 
 const PATTERN_LIST = {
   '普通早熟': 'normalPrecocious',
@@ -201,7 +202,7 @@ export default {
 
     modalOn() {
       const data = {
-        component: CalcModal,
+        component: markRaw(CalcModal),
         header: 'ダメージ計算',
         param: {
           name: this.MonsterData.name,
