@@ -12,7 +12,10 @@
       </tr>
       <template v-for="monster in displayData" :key="monster.id">
         <tr>
-          <td @click="linkToDetail(monster.id)" class="monsterList__table--name">{{ monster.name }}</td>
+          <td @click.self="linkToDetail(monster.id)" class="monsterList__table--name">
+            {{ monster.name }}
+            <img src="@/assets/calc.svg" alt="ダメージ計算" class="monsterList__table--calc" @click="modalOn(monster)">
+          </td>
           <!-- <td>{{ monster.floor }}F</td> -->
           <td>{{ monster.type1 }}</td>
           <td>{{ monster.type2 }}</td>
@@ -37,6 +40,9 @@
 </template>
 
 <script>
+import CalcModal from '@/components/Modal/DamageCalcModal.vue'
+import { markRaw } from "vue";
+
 export default {
   data() {
     return {
@@ -100,8 +106,24 @@ export default {
       this.sortStat.header = str
       this.displayData = newData
     },
+
     linkToDetail(id) {
       this.$router.push({ name: this.linkName, params: { id: id } })
+    },
+
+    modalOn(monster) {
+      const data = {
+        component: markRaw(CalcModal),
+        header: 'ダメージ計算',
+        param: {
+          name: monster.name,
+          level: monster.level,
+          hp: monster.hp,
+          defense: monster.defense
+        }
+      }
+      this.$store.dispatch('setModalData', data)
+      this.$store.dispatch('modalOn')
     }
   },
 

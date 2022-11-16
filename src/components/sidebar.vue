@@ -28,12 +28,6 @@
       </router-link>
     </div>
 
-    <div class="sidebar__button">
-      <div class="sidebar__button--link calc-button" @click="modalOn">
-        ダメージ計算
-      </div>
-    </div>
-
     <div class="sidebar__blank">
     </div>
 
@@ -41,25 +35,11 @@
 </template>
 
 <script>
-import TestModal from '@/components/Modal/DamageCalcModal'
-import { markRaw } from "vue";
-
 export default {
   computed: {
     isActiveDetailGBA() {
       if (this.$route.name === 'monster_detail_gba') return true
         else return false
-    }
-  },
-
-  methods: {
-    modalOn() {
-      const data = {
-        component: markRaw(TestModal),
-        header: 'ダメージ計算',
-      }
-      this.$store.dispatch('setModalData', data)
-      this.$store.dispatch('modalOn')
     }
   }
 }

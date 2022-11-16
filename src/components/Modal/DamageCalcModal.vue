@@ -24,17 +24,17 @@
                 <div class="calc__button number" @click="inputNum(2)">2</div>
                 <div class="calc__button number" @click="inputNum(3)">3</div>
               </div>
-            </div>
-            <div>
-              <div class="calc__button mode-switch">
-                <div class="mode-switch__damage" @click="switchMode(true)">Damage</div>
-                <div class="mode-switch__heal" @click="switchMode(false)">Heal</div>
+              <div class="calc__button--flex">
+                <div class="calc__button number" @click="inputNum(0)">0</div>
+                <div class="calc__button mode-switch" :class="{'mode-switch__on': !mode}" @click="switchMode">
+                  <span v-show="mode">回復OFF</span>
+                  <span v-show="!mode">回復ON</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="calc__button--flex">
-            <div class="calc__button number" @click="inputNum(0)">0</div>
-            <div class="calc__button enter" @click="enterNum">Enter</div>
+            <div>
+              <div class="calc__button enter" @click="enterNum">Enter</div>
+            </div>
           </div>
           <div class="calc__button reset" @click="allReset">
             状態をリセット
@@ -42,7 +42,9 @@
         </div>
       </div>
       <!-- チャート -->
-      <div class="cals__chart--container">{{remainHp}}</div>
+      <div class="cals__chart--container">
+        {{remainHp}}
+      </div>
     </div>
   </div>
 </template>
@@ -74,6 +76,11 @@ export default {
 
   mounted() {
     this.allReset()
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.onKeyDown)
   },
 
   computed: {
@@ -96,10 +103,10 @@ export default {
 
   methods: {
     inputNum(num) {
-      let number = String(this.displayNum)
-      if (number.length >= 9) return
-      number += num
-      this.displayNum = parseInt(number)
+      let number = this.displayNum
+      if (number >= 100000000) return
+      number = number * 10 + num
+      this.displayNum = number
     },
 
     deleteNum() {
@@ -120,8 +127,17 @@ export default {
       this.remainHp = this.param.hp
     },
 
-    switchMode(bool) {
-      this.mode = bool
+    switchMode() {
+      this.mode = !this.mode
+    },
+
+    onKeyDown(event) {
+      const key = event.key
+      const keyCode = event.keyCode
+      if (keyCode === 46 || keyCode === 8) this.deleteNum()
+      else if (keyCode === 13) this.enterNum()
+      else if (keyCode === 32) this.allReset()
+      else if (!isNaN(key)) this.inputNum(parseInt(key))
     }
   }
 }
