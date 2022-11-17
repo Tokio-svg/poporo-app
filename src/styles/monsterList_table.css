@@ -37,7 +37,7 @@
 .monsterList__table th,
 .monsterList__table td {
   border: 1px solid white;
-  padding: 3px 4px;
+  padding: 3px;
   border-bottom: none;
   border-right: none;
 }

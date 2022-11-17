@@ -10,9 +10,15 @@
   margin: -10px auto 0;
 }
 
+.monsterDetail__chart--label {
+  text-align: center;
+  color: rgb(200, 200, 200);
+  margin-top: -30px;
+}
+
 .controlPanel {
   text-align: center;
-  margin: -10px auto 10px;
+  margin: 20px auto 10px;
   background-color: #1c2128;
   width: fit-content;
   padding: 5px 10px 10px 10px;

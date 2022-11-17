@@ -16,7 +16,6 @@ import {
   PointElement,
   RadialLinearScale,
   LineElement,
-  // Plugin
 } from 'chart.js'
 
 ChartJS.register(
@@ -54,9 +53,7 @@ export default {
         },
         plugins: {
           legend: {
-            labels: {
-              color: 'rgb(200, 200, 200)'
-            }
+            display: false
           }
         }
       }
@@ -79,7 +76,7 @@ export default {
           '防御力'
         ],
         datasets: [{
-          label: 'Lv ' + this.chartParam.level + ' (経験値: ' + this.chartParam.exp + ')',
+          label: '',
           data: this.chartParam.status,
           fill: true,
           backgroundColor: 'rgba(255, 99, 132, 0.2)',

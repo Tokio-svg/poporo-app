@@ -32,7 +32,9 @@
 
 .modal__title {
   font-size: 20px;
+  font-weight: bold;
   color: #2d333b;
+  padding-left: 20px;
 }
 
 .modal__close {

@@ -26,31 +26,44 @@
               </div>
               <div class="calc__button--flex">
                 <div class="calc__button number" @click="inputNum(0)">0</div>
-                <div class="calc__button mode-switch" :class="{'mode-switch__on': !mode}" @click="switchMode">
-                  <span v-show="mode">回復OFF</span>
-                  <span v-show="!mode">回復ON</span>
-                </div>
+                <div class="calc__button division" @click="divisionHp(0.5)">1/2</div>
+                <div class="calc__button division" @click="divisionHp(0.75)">1/4</div>
+              </div>
+              <div class="calc__button mode-switch" :class="{'mode-switch__on': !mode}" @click="switchMode">
+                <span v-show="mode">回復OFF</span>
+                <span v-show="!mode">回復ON</span>
               </div>
             </div>
             <div>
               <div class="calc__button enter" @click="enterNum">Enter</div>
             </div>
           </div>
-          <div class="calc__button reset" @click="allReset">
-            状態をリセット
-          </div>
         </div>
       </div>
       <!-- チャート -->
-      <div class="cals__chart--container">
-        {{remainHp}}
+      <div class="calc__chart--container">
+        <div class="calc__chart">
+          <bar-chart :chart-param="chartParam"/>
+        </div>
+        <div class="calc__chart--remain">
+          残りHP: {{remainHp}}
+        </div>
+        <div class="calc__button reset" @click="allReset">
+          残りHPをリセット
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BarChart from '@/components/Chart/BarChart.vue'
+
 export default {
+  components: {
+    BarChart
+  },
+
   data() {
     return {
       remainHp: 0,
@@ -98,6 +111,14 @@ export default {
 
     defense() {
       return this.param.defense
+    },
+
+    chartParam() {
+      const param = {
+        maxHp: this.hp,
+        remainHp: this.remainHp
+      }
+      return param
     }
   },
 
@@ -138,6 +159,10 @@ export default {
       else if (keyCode === 13) this.enterNum()
       else if (keyCode === 32) this.allReset()
       else if (!isNaN(key)) this.inputNum(parseInt(key))
+    },
+
+    divisionHp(num) {
+      this.displayNum = parseInt(this.remainHp * num)
     }
   }
 }

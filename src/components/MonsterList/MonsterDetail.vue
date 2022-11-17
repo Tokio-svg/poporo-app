@@ -8,6 +8,10 @@
       <radar-chart :chart-param="chartParam" />
     </div>
 
+    <div class="monsterDetail__chart--label">
+      Lv{{displayLevel}} (経験値: {{growthPattern[displayLevel][3]}})
+    </div>
+
     <div class="controlPanel">
       <div class="controlPanel__label">レベルコントロールパネル</div>
       <button @click="changeLevel(-10)" class="button__level">-10</button>
