@@ -4,6 +4,7 @@
 
 .itemList__table--number {
   text-align: right;
+  vertical-align: middle;
 }
 
 .itemList__table {

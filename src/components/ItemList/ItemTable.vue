@@ -1,5 +1,6 @@
 <template>
   <div class="itemList__table--container">
+    <!-- <p>{{buyingPriceGroupe}}</p> -->
     <table class="itemList__table">
       <tr>
         <template v-for="header in displayHeader" :key="header">
@@ -10,7 +11,7 @@
           </th>
         </template>
       </tr>
-      <template v-for="item in displayData" :key="item.id">
+      <template v-for="(item, index) in displayData" :key="item.id">
         <tr>
           <td>{{item.name}}</td>
           <template v-if="item.hasOwnProperty('slot')">
@@ -18,8 +19,33 @@
             <td>{{item.slotName}}</td>
             <td>{{item.slotPriority}}</td>
           </template>
-          <td class="itemList__table--number">{{item.buyingPrice}}</td>
-          <td class="itemList__table--number">{{item.sellingPrice}}</td>
+          <!-- 値段は連続する同じ値でまとめる -->
+          <template v-if="index > 0">
+            <td
+              class="itemList__table--number"
+              v-if="item.buyingPrice !== displayData[index-1].buyingPrice && buyingPriceGroupe[index] !== 0"
+              :rowspan="buyingPriceGroupe[index]">
+              {{item.buyingPrice}}
+            </td>
+          </template>
+          <template v-else>
+            <td class="itemList__table--number" :rowspan="buyingPriceGroupe[index]">
+              {{item.buyingPrice}}
+            </td>
+          </template>
+          <template v-if="index > 0">
+            <td
+              class="itemList__table--number"
+              v-if="item.sellingPrice !== displayData[index-1].sellingPrice && sellingPriceGroupe[index] !== 0"
+              :rowspan="sellingPriceGroupe[index]">
+              {{item.sellingPrice}}
+            </td>
+          </template>
+          <template v-else>
+            <td class="itemList__table--number" :rowspan="sellingPriceGroupe[index]">
+              {{item.sellingPrice}}
+            </td>
+          </template>
           <td>{{displayParam(item.drop)}}</td>
           <td>{{displayParam(item.shop)}}</td>
           <td>{{displayParam(item.change)}}</td>
@@ -56,6 +82,58 @@ export default {
 
   props: {
     tableData: Object
+  },
+
+  computed: {
+    buyingPriceGroupe() {
+      const data = this.displayData
+      let count = 0
+      const groupe = []
+      data.forEach((item, index) => {
+        count++
+        if (index === data.length-1) {
+          groupe.push(count)
+          for(let i=1; i<count; i++) {
+            groupe.push(0)
+          }
+        }
+        else {
+          if (item.buyingPrice !== data[index+1].buyingPrice) {
+            groupe.push(count)
+            for(let i=1; i<count; i++) {
+              groupe.push(0)
+            }
+            count = 0
+          }
+        }
+      })
+      return groupe
+    },
+
+    sellingPriceGroupe() {
+      const data = this.displayData
+      let count = 0
+      const groupe = []
+      data.forEach((item, index) => {
+        count++
+        if (index === data.length-1) {
+          groupe.push(count)
+          for(let i=1; i<count; i++) {
+            groupe.push(0)
+          }
+        }
+        else {
+          if (item.sellingPrice !== data[index+1].sellingPrice) {
+            groupe.push(count)
+            for(let i=1; i<count; i++) {
+              groupe.push(0)
+            }
+            count = 0
+          }
+        }
+      })
+      return groupe
+    }
   },
 
   methods: {
