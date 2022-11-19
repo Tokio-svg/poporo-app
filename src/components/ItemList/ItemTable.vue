@@ -1,6 +1,14 @@
 <template>
   <div class="itemList__table--container">
-    <!-- <p>{{buyingPriceGroupe}}</p> -->
+    <div class="itemList__search--container">
+      <input type="text" class="itemList__search--input" v-model="inputWord" @keydown.enter="search">
+      <button class="itemList__search--button search-button" @click="search">検索</button>
+      <button
+        class="itemList__search--button clear-button"
+        @click="keywordClear"
+        :class="{'available': keyword}">
+        クリア</button>
+    </div>
     <table class="itemList__table">
       <tr>
         <template v-for="header in displayHeader" :key="header">
@@ -76,7 +84,9 @@ export default {
       sortStat: {
         header: null,
         order: null
-      }
+      },
+      inputWord: "",
+      keyword: ""
     }
   },
 
@@ -145,11 +155,10 @@ export default {
     },
 
     sortData(str) {
-      let obj = Object.assign({}, this.tableData)
       let newData = null
       if (this.sortStat.header !== str || this.sortStat.order !== 'asc') {
         // 昇順
-        newData = obj.data.sort((a,b)=> {
+        newData = this.displayData.sort((a,b)=> {
           if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return -1;
           if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return 1;
           return 0;
@@ -157,7 +166,7 @@ export default {
         this.sortStat.order = 'asc'
       } else if (this.sortStat.header === str && this.sortStat.order !== 'desc') {
         // 降順
-        newData = obj.data.sort((a,b)=> {
+        newData = this.displayData.sort((a,b)=> {
           if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return -1;
           if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return 1;
           return 0;
@@ -166,6 +175,25 @@ export default {
       }
       this.sortStat.header = str
       this.displayData = newData
+    },
+
+    search() {
+      this.keyword = this.inputWord
+      if (!this.inputWord) {
+        this.keywordClear()
+      } else {
+        const result = this.displayData.filter(item => item.name.indexOf(this.keyword) !== -1)
+        this.displayData = result
+      }
+    },
+
+    keywordClear() {
+      this.keyword = ''
+      this.inputWord = ''
+      this.displayData = this.tableData.data
+      this.sortData('名前')
+      this.sortStat.header = null
+      this.sortStat.order = null
     }
   },
 

@@ -1,5 +1,18 @@
 <template>
   <div>
+    <div class="monsterList__search--container">
+      <input type="text" class="monsterList__search--input" v-model="inputWord" @keydown.enter="search">
+      <button
+        class="monsterList__search--button search-button"
+        @click="search"
+        >検索</button>
+      <button
+        class="monsterList__search--button clear-button"
+        @click="keywordClear"
+        :class="{'available': keyword}">
+        クリア</button>
+    </div>
+
     <table class="monsterList__table">
       <tr>
         <template v-for="item in headerSet" :key="item">
@@ -11,7 +24,7 @@
         </template>
       </tr>
       <template v-for="monster in displayData" :key="monster.id">
-        <tr>
+        <tr v-show="isVisible(monster.name)">
           <td @click.self="linkToDetail(monster.id)" class="monsterList__table--name">
             {{ monster.name }}
             <img src="@/assets/calc.svg" alt="ダメージ計算" class="monsterList__table--calc" @click="modalOn(monster)">
@@ -51,6 +64,8 @@ export default {
         header: null,
         order: null
       },
+      inputWord: "",
+      keyword: "",
       headerSet: [
         { headerStr: '名前', sortStr: 'name' },
         // { headerStr: '階層', sortStr: 'floor' },
@@ -124,6 +139,21 @@ export default {
       }
       this.$store.dispatch('setModalData', data)
       this.$store.dispatch('modalOn')
+    },
+
+    search() {
+      this.keyword = this.inputWord
+    },
+
+    keywordClear() {
+      this.keyword = ''
+      this.inputWord = ''
+    },
+
+    isVisible(name) {
+      if (!this.keyword) return true
+      if (name.indexOf(this.keyword) !== -1) return true
+      return false
     }
   },
 

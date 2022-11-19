@@ -11,10 +11,10 @@
   border-collapse: separate;
   border-spacing: 0;
   font-size: 12px;
-  margin: 10px auto;
+  margin: 0px auto;
   text-align: center;
   width: fit-content;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 120px);
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -37,7 +37,7 @@
 }
 
 .itemList__table tr:nth-child(2n) {
-  background-color: #13373a;
+  background-color: #0d2b2e;
 }
 
 .itemList__table th {
@@ -56,4 +56,55 @@
 .itemList__table th:hover {
   background-color: #6ea7ed;
   transition: 0.3s;
+}
+
+/* 検索 */
+.itemList__search--container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 13px;
+}
+
+.itemList__search--input {
+  background-color: white;
+  color: black;
+  padding: 2px 10px;
+  width: 200px;
+  border-radius: 3px;
+}
+
+.itemList__search--button {
+  text-align: center;
+  margin-left: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 60px;
+  height: 25px;
+}
+
+.search-button {
+  background-color: #ffbd42;
+  color: white;
+}
+
+.search-button:hover {
+  filter: brightness(150%);
+  transition: 0.3s;
+  color: #1c2128;
+}
+
+.clear-button {
+  background-color: #c5c5c5;
+  color: #838383;
+  border: 2px solid #838383;
+}
+
+.available {
+  background-color: white;
+  color: #ffbd42;
+  border: 2px solid #ffbd42;
 }
