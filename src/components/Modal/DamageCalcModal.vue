@@ -155,10 +155,13 @@ export default {
     onKeyDown(event) {
       const key = event.key
       const keyCode = event.keyCode
+      if (key === 'Tab') event.preventDefault()
       if (keyCode === 46 || keyCode === 8) this.deleteNum()
       else if (keyCode === 13) this.enterNum()
-      else if (keyCode === 32) this.allReset()
-      else if (!isNaN(key)) this.inputNum(parseInt(key))
+      else if (keyCode === 32) {
+        event.preventDefault()
+        this.allReset()
+      } else if (!isNaN(key)) this.inputNum(parseInt(key))
     },
 
     divisionHp(num) {
