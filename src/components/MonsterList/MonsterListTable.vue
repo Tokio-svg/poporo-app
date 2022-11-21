@@ -13,7 +13,7 @@
         クリア</button>
     </div>
 
-    <table class="monsterList__table">
+    <table ref="main_table" class="monsterList__table">
       <tr>
         <template v-for="item in headerSet" :key="item">
           <th @click="sortData(item.sortStr)">
@@ -120,6 +120,7 @@ export default {
       }
       this.sortStat.header = str
       this.displayData = newData
+      this.$refs.main_table.scrollTop = 0
     },
 
     linkToDetail(id) {

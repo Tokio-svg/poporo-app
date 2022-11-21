@@ -29,13 +29,20 @@
     </div>
 
     <div class="sidebar__blank">
+      <counter-component />
     </div>
 
   </div>
 </template>
 
 <script>
+import CounterComponent from '@/components/Counter.vue'
+
 export default {
+  components: {
+    CounterComponent
+  },
+
   computed: {
     isActiveDetailGBA() {
       if (this.$route.name === 'monster_detail_gba') return true

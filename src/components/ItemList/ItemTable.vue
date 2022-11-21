@@ -9,7 +9,7 @@
         :class="{'available': keyword}">
         クリア</button>
     </div>
-    <table class="itemList__table">
+    <table ref="main_table" class="itemList__table">
       <tr>
         <template v-for="header in displayHeader" :key="header">
           <th @click="sortData(header)">
@@ -175,6 +175,7 @@ export default {
       }
       this.sortStat.header = str
       this.displayData = newData
+      this.$refs.main_table.scrollTop = 0
     },
 
     search() {
@@ -204,6 +205,7 @@ export default {
       this.sortData('名前')
       this.sortStat.header = null
       this.sortStat.order = null
+      this.$refs.main_table.scrollTop = 0
     }
   }
 }

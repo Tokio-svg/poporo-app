@@ -59,8 +59,93 @@
 .sidebar__blank {
   height: calc(100vh - 240px);
   border-right: 1px solid #55dc43;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 30px;
 }
 
 .sidebar__button--icon {
   width: 16px;
+}
+
+/* ルカナンカウンター */
+.counter__container {
+  padding: 14px;
+  width: fit-content;
+  margin: auto auto 0;
+  background-color: #2d333b;
+  border-radius: 3px;
+}
+
+.counter__flex {
+  display: flex;
+}
+
+.counter__img {
+  width: 33px;
+  height: 33px;
+  background: url(@/assets/counter.png) no-repeat;
+}
+
+.counter__number {
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #55dc43;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.counter__add {
+  color: white;
+  background-color: #ffbd42;
+  text-align: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.counter__add:hover {
+  background-color: #ffe2ad;
+  color: #ffa600;
+}
+
+.counter__reset {
+  cursor: pointer;
+  width: 103px;
+  padding: 0 10px;
+  background-color: #ffe2ad;
+  color: #ffa600;
+  font-size: 12px;
+  font-weight: bold;
+  border: 3px solid #ffa600;
+  border-radius: 3px;
+  text-align: center;
+  margin-top: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.counter__reset:hover {
+  background-color: #ffbd42;
+  color: white;
+}
+
+.counter__yellow {
+  color: yellow;
+}
+
+.counter__red {
+  color: red;
 }
