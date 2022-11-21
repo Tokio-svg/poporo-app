@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar'
+import Sidebar from '@/components/sidebar.vue'
 import ModalWindow from '@/components/Modal/ModalBase.vue'
 
 export default {

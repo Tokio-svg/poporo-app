@@ -334,8 +334,8 @@ export default {
         slot: 2,
         slotName: 'ルーラ',
         slotPriority: 14,
-        buyingPrice: 5000,
-        sellingPrice: 2500,
+        buyingPrice: 7500,
+        sellingPrice: 1500,
         drop: true,
         shop: true,
         change: true
