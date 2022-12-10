@@ -36,32 +36,21 @@
 
       <div class="itemList__header--blank"></div>
     </div>
-    <item-table :table-data="tableData" />
+    <ItemTable :table-data="tableData" />
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 import ItemTable from '@/components/ItemList/ItemTable.vue'
 import ItemData from '@/const/itemData'
 
-export default {
-  components: {
-    ItemTable
-  },
+const tableData = ref(ItemData['ring'])
+const select = ref('ring')
 
-  data() {
-    return {
-      tableData: ItemData['ring'],
-      select: 'ring'
-    }
-  },
-
-  methods: {
-    changeData(str) {
-      this.tableData = Object.assign({}, ItemData[str])
-      this.select = str
-    }
-  }
+const changeData = (str) => {
+  tableData.value = Object.assign({}, ItemData[str])
+  select.value = str
 }
 </script>
 

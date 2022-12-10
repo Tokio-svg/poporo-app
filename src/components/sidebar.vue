@@ -29,27 +29,23 @@
     </div>
 
     <div class="sidebar__blank">
-      <counter-component />
+      <CounterComponent/>
     </div>
 
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import CounterComponent from '@/components/Counter.vue'
 
-export default {
-  components: {
-    CounterComponent
-  },
+const route = useRoute()
 
-  computed: {
-    isActiveDetailGBA() {
-      if (this.$route.name === 'monster_detail_gba') return true
-        else return false
-    }
-  }
-}
+const isActiveDetailGBA = computed(() => {
+  if (route.name === 'monster_detail_gba') return true
+    else return false
+})
 </script>
 
 <style scoped>

@@ -16,20 +16,13 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
+import store from '@/store/index'
 import Sidebar from '@/components/sidebar.vue'
 import ModalWindow from '@/components/Modal/ModalBase.vue'
 
-export default {
-  components: {
-    Sidebar,
-    ModalWindow
-  },
-
-  computed: {
-    modalIsActive() {
-      return this.$store.state.modalIsActive
-    }
-  }
-}
+const modalIsActive = computed(() => {
+  return store.state.modalIsActive
+})
 </script>

@@ -12,23 +12,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
+<script setup>
+import { ref } from 'vue'
 
-  methods: {
-    addCount() {
-      this.count++
-    },
+const count = ref(0)
 
-    resetCount() {
-      this.count = 0
-    }
-  }
+const addCount = () => {
+  count.value++
+  if (count.value > 99) count.value = 99
+}
+
+const resetCount = () => {
+  count.value = 0
 }
 </script>
 
