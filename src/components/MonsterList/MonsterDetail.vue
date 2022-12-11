@@ -5,7 +5,7 @@
     </div>
 
     <div class="monsterDetail__chart--container">
-      <radar-chart :chart-param="chartParam" />
+      <RadarChart :chart-param="chartParam" />
     </div>
 
     <div class="monsterDetail__chart--label">
@@ -98,9 +98,12 @@
   </div>
 </template>
 
-<script>
-import MonsterData from '@/const/monsterData'
-import MonsterDataGBA from '@/const/monsterDataGBA'
+<script setup>
+import { ref, computed, watch, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import store from '@/store/index'
+import MonstersData from '@/const/monsterData'
+import MonstersDataGBA from '@/const/monsterDataGBA'
 import PatternData from '@/const/growthPattern'
 import RadarChart from '@/components/Chart/RadarChart.vue'
 import CalcModal from '@/components/Modal/DamageCalcModal.vue'
@@ -117,109 +120,98 @@ const PATTERN_LIST = {
   '攻撃特殊': 'attackSpecial'
 }
 
-export default {
-  components: {
-    RadarChart,
-  },
+const route = useRoute()
+const router = useRouter()
 
-  data() {
-    return {
-      displayLevel: 1
-    }
-  },
+const displayLevel = ref(1)
 
-  mounted() {
-    this.displayLevel = this.MonsterData.level
-  },
+onMounted(() => {
+  displayLevel.value = MonsterData.value.level
+})
 
-  computed: {
-    MonsterData() {
-      const id = parseInt(this.$route.params.id)
-      const allMonsterDataArray = MonsterData.monsterData.concat(MonsterDataGBA.monsterDataGBA)
-      const targetData = allMonsterDataArray.find((v) => v.id === id)
-      return targetData
-    },
+const MonsterData = computed(() => {
+  const id = parseInt(route.params.id)
+  const allMonsterDataArray = MonstersData.monsterData.concat(MonstersDataGBA.monsterDataGBA)
+  const targetData = allMonsterDataArray.find((v) => v.id === id)
+  return targetData
+})
 
-    growthPattern() {
-      return PatternData[PATTERN_LIST[this.MonsterData.growth]]
-    },
+const growthPattern = computed(() => {
+  return PatternData[PATTERN_LIST[MonsterData.value.growth]]
+})
 
-    displayHP() {
-      const param = this.MonsterData.hp + this.growthPattern[this.displayLevel][0] - this.growthPattern[this.MonsterData.level][0]
-      return param
-    },
+const displayHP = computed(() => {
+  const param = MonsterData.value.hp + growthPattern.value[displayLevel.value][0]
+                - growthPattern.value[MonsterData.value.level][0]
+  return param
+})
 
-    displayATK() {
-      const param = this.MonsterData.attack + this.growthPattern[this.displayLevel][1] - this.growthPattern[this.MonsterData.level][1]
-      return param
-    },
+const displayATK = computed(() => {
+  const param = MonsterData.value.attack + growthPattern.value[displayLevel.value][1]
+                - growthPattern.value[MonsterData.value.level][1]
+  return param
+})
 
-    displayDEF() {
-      const param = this.MonsterData.defense + this.growthPattern[this.displayLevel][2] - this.growthPattern[this.MonsterData.level][2]
-      return param
-    },
+const displayDEF = computed(() => {
+  const param = MonsterData.value.defense + growthPattern.value[displayLevel.value][2]
+                - growthPattern.value[MonsterData.value.level][2]
+  return param
+})
 
-    chartParam() {
-      const param = {
-        status: [
-          this.displayHP / 150 * 100,
-          this.displayATK / 65 * 100,
-          this.displayDEF / 58 * 100
-        ],
-        level: this.displayLevel,
-        exp: this.growthPattern[this.displayLevel][3]
-      }
-
-      return param
-    },
-
-    maxDamage() {
-      return Math.round(this.displayATK * 1.4625)
-    },
-
-    isMaxLevel() {
-      return this.displayLevel === this.MonsterData.maxLevel
-    }
-
-  },
-
-  methods: {
-    changeLevel(num) {
-      let level = this.displayLevel
-      level += num
-      if (level < 1) level = 1
-      if (level > this.MonsterData.maxLevel) level = this.MonsterData.maxLevel
-      this.displayLevel = level
-    },
-
-    resetLevel() {
-      this.displayLevel = this.MonsterData.level
-    },
-
-    linkToBack() {
-      this.$router.go(-1)
-    },
-
-    linkToAnother(id) {
-      this.$router.push({ name:'monster_detail', params: { id: id } })
-    },
-
-    modalOn() {
-      const data = {
-        component: markRaw(CalcModal),
-        header: 'ダメージ計算',
-        param: {
-          name: this.MonsterData.name,
-          level: this.displayLevel,
-          hp: this.displayHP,
-          defense: this.displayDEF
-        }
-      }
-      this.$store.dispatch('setModalData', data)
-      this.$store.dispatch('modalOn')
-    }
-
+const chartParam = computed(() => {
+  const param = {
+    status: [
+      displayHP.value / 150 * 100,
+      displayATK.value / 65 * 100,
+      displayDEF.value / 58 * 100
+    ],
+    level: displayLevel.value,
+    exp: growthPattern.value[displayLevel.value][3]
   }
+  return param
+})
+
+const maxDamage = computed(() => {
+  return Math.round(displayATK.value * 1.4625)
+})
+
+const isMaxLevel = computed(() => {
+  return displayLevel.value === MonsterData.value.maxLevel
+})
+
+const changeLevel = (num) => {
+  let level = displayLevel.value
+  level += num
+  if (level < 1) level = 1
+  if (level > MonsterData.value.maxLevel) level = MonsterData.value.maxLevel
+  displayLevel.value = level
+}
+
+const resetLevel = () => {
+  displayLevel.value = MonsterData.value.level
+}
+
+const linkToBack = () => {
+  router.go(-1)
+}
+
+const linkToAnother = (id) => {
+  router.push({ name:'monster_detail', params: { id: id } })
+}
+
+const modalOn = () => {
+  const data = {
+    component: markRaw(CalcModal),
+    header: 'ダメージ計算',
+    param: {
+      name:    MonsterData.value.name,
+      level:   displayLevel.value,
+      hp:      displayHP.value,
+      defense: displayDEF.value
+    }
+  }
+  store.dispatch('setModalData', data)
+  store.dispatch('modalOn')
 }
 </script>
 

@@ -80,18 +80,18 @@ const sortStat = ref({
 const inputWord = ref("")
 const keyword = ref("")
 const headerSet = ref([
-  { headerStr: '名前', sortStr: 'name' },
+  { headerStr: '名前',   sortStr: 'name' },
   // { headerStr: '階層', sortStr: 'floor' },
-  { headerStr: '系1', sortStr: 'type1' },
-  { headerStr: '系2', sortStr: 'type2' },
-  { headerStr: 'HP', sortStr: 'hp' },
-  { headerStr: '攻撃', sortStr: 'attack' },
-  { headerStr: '防御', sortStr: 'defense' },
-  { headerStr: 'EXP', sortStr: 'exp' },
-  { headerStr: 'Lv', sortStr: 'level' },
-  { headerStr: '限Lv', sortStr: 'maxLevel' },
-  { headerStr: '回復', sortStr: 'heal' },
-  { headerStr: '成長', sortStr: 'growth' },
+  { headerStr: '系1',    sortStr: 'type1' },
+  { headerStr: '系2',    sortStr: 'type2' },
+  { headerStr: 'HP',     sortStr: 'hp' },
+  { headerStr: '攻撃',   sortStr: 'attack' },
+  { headerStr: '防御',   sortStr: 'defense' },
+  { headerStr: 'EXP',    sortStr: 'exp' },
+  { headerStr: 'Lv',     sortStr: 'level' },
+  { headerStr: '限Lv',   sortStr: 'maxLevel' },
+  { headerStr: '回復',   sortStr: 'heal' },
+  { headerStr: '成長',   sortStr: 'growth' },
   { headerStr: 'ドロ率', sortStr: 'drop' },
   { headerStr: '修正値', sortStr: 'correction' }
 ])
@@ -136,9 +136,9 @@ const modalOn = (monster) => {
     component: markRaw(CalcModal),
     header: 'ダメージ計算',
     param: {
-      name: monster.name,
-      level: monster.level,
-      hp: monster.hp,
+      name:    monster.name,
+      level:   monster.level,
+      hp:      monster.hp,
       defense: monster.defense
     }
   }
