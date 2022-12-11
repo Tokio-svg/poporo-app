@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkpoporo_app"]=self["webpackChunkpoporo_app"]||[]).push([[902],{8902:function(r,n,u){u.r(n),u.d(n,{default:function(){return c}});var e=u(3396);function o(r,n,u,o,p,t){const a=(0,e.up)("router-view");return(0,e.wg)(),(0,e.iD)("div",null,[(0,e.Wm)(a)])}var p={},t=u(89);const a=(0,t.Z)(p,[["render",o]]);var c=a}}]);
-//# sourceMappingURL=902.9bfe97e4.js.map
+//# sourceMappingURL=902.5d01f374.js.map

@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, defineProps } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import store from '@/store/index'
 import CalcModal from '@/components/Modal/DamageCalcModal.vue'

@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, defineProps } from 'vue'
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,

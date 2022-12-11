@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, defineProps } from 'vue'
 import BarChart from '@/components/Chart/BarChart.vue'
 
 const props = defineProps({

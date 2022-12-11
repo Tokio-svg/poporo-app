@@ -10,5 +10,9 @@ export default {
     alias: {
       '@': path.resolve(__dirname, './src')
     }
+  },
+  build: {
+    outDir: 'docs',
+    assetsDir: './'
   }
 }
