@@ -63,7 +63,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, watch } from 'vue'
+
 const SORT_OBJ = {
   '名前':   'id',
   '買値':   'buyingPrice',
@@ -76,139 +78,133 @@ const SORT_OBJ = {
   '優先順': 'slotPriority'
 }
 
-export default {
-  data() {
-    return {
-      displayHeader: this.tableData.header,
-      displayData: this.tableData.data,
-      sortStat: {
-        header: null,
-        order: null
-      },
-      inputWord: "",
-      keyword: ""
-    }
-  },
+const props = defineProps({
+  tableData: Object
+})
 
-  props: {
-    tableData: Object
-  },
+// watch用にcomputedでpropsの値を返す
+const tableData = computed(() => {
+  return props.tableData
+})
 
-  computed: {
-    buyingPriceGroupe() {
-      const data = this.displayData
-      let count = 0
-      const groupe = []
-      data.forEach((item, index) => {
-        count++
-        if (index === data.length-1) {
-          groupe.push(count)
-          for(let i=1; i<count; i++) {
-            groupe.push(0)
-          }
-        }
-        else {
-          if (item.buyingPrice !== data[index+1].buyingPrice) {
-            groupe.push(count)
-            for(let i=1; i<count; i++) {
-              groupe.push(0)
-            }
-            count = 0
-          }
-        }
-      })
-      return groupe
-    },
+const main_table = ref()
 
-    sellingPriceGroupe() {
-      const data = this.displayData
-      let count = 0
-      const groupe = []
-      data.forEach((item, index) => {
-        count++
-        if (index === data.length-1) {
-          groupe.push(count)
-          for(let i=1; i<count; i++) {
-            groupe.push(0)
-          }
-        }
-        else {
-          if (item.sellingPrice !== data[index+1].sellingPrice) {
-            groupe.push(count)
-            for(let i=1; i<count; i++) {
-              groupe.push(0)
-            }
-            count = 0
-          }
-        }
-      })
-      return groupe
-    }
-  },
+const displayHeader = ref(props.tableData.header)
+const displayData = ref(props.tableData.data)
+const sortStat = ref({
+  header: null,
+  order: null
+})
+const inputWord = ref("")
+const keyword = ref("")
 
-  methods: {
-    displayParam(param) {
-      let returnParam = param
-      if (param===true) returnParam = '●'
-      if (param===false) returnParam = ''
-      return returnParam
-    },
-
-    sortData(str) {
-      let newData = null
-      if (this.sortStat.header !== str || this.sortStat.order !== 'asc') {
-        // 昇順
-        newData = this.displayData.sort((a,b)=> {
-          if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return -1;
-          if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return 1;
-          return 0;
-        })
-        this.sortStat.order = 'asc'
-      } else if (this.sortStat.header === str && this.sortStat.order !== 'desc') {
-        // 降順
-        newData = this.displayData.sort((a,b)=> {
-          if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return -1;
-          if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return 1;
-          return 0;
-        })
-        this.sortStat.order = 'desc'
+const buyingPriceGroupe = computed(() => {
+  const data = displayData.value
+  let count = 0
+  const groupe = []
+  data.forEach((item, index) => {
+    count++
+    if (index === data.length-1) {
+      groupe.push(count)
+      for(let i=1; i<count; i++) {
+        groupe.push(0)
       }
-      this.sortStat.header = str
-      this.displayData = newData
-      this.$refs.main_table.scrollTop = 0
-    },
-
-    search() {
-      this.keyword = this.inputWord
-      if (!this.inputWord) {
-        this.keywordClear()
-      } else {
-        const result = this.displayData.filter(item => item.name.indexOf(this.keyword) !== -1)
-        this.displayData = result
+    }
+    else {
+      if (item.buyingPrice !== data[index+1].buyingPrice) {
+        groupe.push(count)
+        for(let i=1; i<count; i++) {
+          groupe.push(0)
+        }
+        count = 0
       }
-    },
-
-    keywordClear() {
-      this.keyword = ''
-      this.inputWord = ''
-      this.displayData = this.tableData.data
-      this.sortData('名前')
-      this.sortStat.header = null
-      this.sortStat.order = null
     }
-  },
+  })
+  return groupe
+})
 
-  watch: {
-    tableData(nVal) {
-      this.displayData = nVal.data
-      this.displayHeader = nVal.header
-      this.sortData('名前')
-      this.sortStat.header = null
-      this.sortStat.order = null
-      this.$refs.main_table.scrollTop = 0
+const sellingPriceGroupe = computed(() => {
+  const data = displayData.value
+  let count = 0
+  const groupe = []
+  data.forEach((item, index) => {
+    count++
+    if (index === data.length-1) {
+      groupe.push(count)
+      for(let i=1; i<count; i++) {
+        groupe.push(0)
+      }
     }
+    else {
+      if (item.sellingPrice !== data[index+1].sellingPrice) {
+        groupe.push(count)
+        for(let i=1; i<count; i++) {
+          groupe.push(0)
+        }
+        count = 0
+      }
+    }
+  })
+  return groupe
+})
+
+const displayParam = (param) => {
+  let returnParam = param
+  if (param === true) returnParam = '●'
+  if (param === false) returnParam = ''
+  return returnParam
+}
+
+const sortData = (str) => {
+  let newData = null
+  if (sortStat.value.header !== str || sortStat.value.order !== 'asc') {
+    // 昇順
+    newData = displayData.value.sort((a,b)=> {
+      if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return -1;
+      if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return 1;
+      return 0;
+    })
+    sortStat.value.order = 'asc'
+  } else if (sortStat.value.header === str && sortStat.value.order !== 'desc') {
+    // 降順
+    newData = displayData.value.sort((a,b)=> {
+      if(a[SORT_OBJ[str]] > b[SORT_OBJ[str]]) return -1;
+      if(a[SORT_OBJ[str]] < b[SORT_OBJ[str]]) return 1;
+      return 0;
+    })
+    sortStat.value.order = 'desc'
+  }
+  sortStat.value.header = str
+  displayData.value = newData
+  main_table.value.scrollTop = 0
+}
+
+const search = () => {
+  keyword.value = inputWord.value
+  if (!inputWord.value) {
+    keywordClear()
+  } else {
+    displayData.value = props.tableData.data.filter(item => item.name.indexOf(keyword.value) !== -1)
   }
 }
+
+const keywordClear = () => {
+  keyword.value = ''
+  inputWord.value = ''
+  displayData.value = props.tableData.data
+  sortData('名前')
+  sortStat.value.header = null
+  sortStat.value.order = null
+}
+
+watch(tableData, (nVal) => {
+  displayData.value = nVal.data
+  displayHeader.value = nVal.header
+  sortData('名前')
+  sortStat.value.header = null
+  sortStat.value.order = null
+  main_table.value.scrollTop = 0
+})
 </script>
 
 <style scoped>
