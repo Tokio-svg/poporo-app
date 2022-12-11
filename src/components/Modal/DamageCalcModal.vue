@@ -43,7 +43,7 @@
       <!-- チャート -->
       <div class="calc__chart--container">
         <div class="calc__chart">
-          <bar-chart :chart-param="chartParam"/>
+          <BarChart :chart-param="chartParam"/>
         </div>
         <div class="calc__chart--remain">
           残りHP: {{remainHp}}
@@ -56,118 +56,95 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import BarChart from '@/components/Chart/BarChart.vue'
 
-export default {
-  components: {
-    BarChart
-  },
-
-  data() {
-    return {
-      remainHp: 0,
-      displayNum: 0,
-      mode: true
-    }
-  },
-
-  props: {
-    param: {
-      type: Object,
-      require: false,
-      'default': () => {
-        return {
-          name: '指定なし',
-          level: null,
-          hp: 0,
-          defense: 0
-        }
+const props = defineProps({
+  param: {
+    type: Object,
+    require: false,
+    'default': () => {
+      return {
+        name: '指定なし',
+        level: null,
+        hp: 0,
+        defense: 0
       }
-    }
-  },
-
-  mounted() {
-    this.allReset()
-    document.addEventListener('keydown', this.onKeyDown)
-  },
-
-  beforeUnmount() {
-    document.removeEventListener('keydown', this.onKeyDown)
-  },
-
-  computed: {
-    name() {
-      return this.param.name
-    },
-
-    level() {
-      return this.param.level
-    },
-
-    hp() {
-      return this.param.hp
-    },
-
-    defense() {
-      return this.param.defense
-    },
-
-    chartParam() {
-      const param = {
-        maxHp: this.hp,
-        remainHp: this.remainHp
-      }
-      return param
-    }
-  },
-
-  methods: {
-    inputNum(num) {
-      let number = this.displayNum
-      if (number >= 100000000) return
-      number = number * 10 + num
-      this.displayNum = number
-    },
-
-    deleteNum() {
-      this.displayNum = 0
-    },
-
-    enterNum() {
-      if (this.mode) this.remainHp -= this.displayNum
-        else {
-          this.remainHp += this.displayNum
-          if (this.remainHp > this.param.hp) this.remainHp = this.param.hp
-        }
-      if (this.remainHp < 0) this.remainHp = 0
-      this.displayNum = 0
-    },
-
-    allReset() {
-      this.remainHp = this.param.hp
-    },
-
-    switchMode() {
-      this.mode = !this.mode
-    },
-
-    onKeyDown(event) {
-      const key = event.key
-      const keyCode = event.keyCode
-      if (key === 'Tab') event.preventDefault()
-      if (keyCode === 46 || keyCode === 8) this.deleteNum()
-      else if (keyCode === 13) this.enterNum()
-      else if (keyCode === 32) {
-        event.preventDefault()
-        this.allReset()
-      } else if (!isNaN(key)) this.inputNum(parseInt(key))
-    },
-
-    divisionHp(num) {
-      this.displayNum = parseInt(this.remainHp * num)
     }
   }
+})
+
+onMounted(() => {
+  allReset()
+  document.addEventListener('keydown', onKeyDown)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', onKeyDown)
+})
+
+const remainHp = ref(0)
+const displayNum = ref(0)
+const mode = ref(true)
+
+const name = computed(() => {
+  return props.param.name
+})
+const level = computed(() => {
+  return props.param.level
+})
+const hp = computed(() => {
+  return props.param.hp
+})
+// const defense = computed(() => {
+//   return props.param.defense
+// })
+const chartParam = computed(() => {
+  const param = {
+    maxHp: hp.value,
+    remainHp: remainHp.value
+  }
+  return param
+})
+
+const inputNum = (num) => {
+  let number = displayNum.value
+  if (number >= 100000000) return
+  number = number * 10 + num
+  displayNum.value = number
+}
+const deleteNum = () => {
+  displayNum.value = 0
+}
+const enterNum = () => {
+  if (mode.value) remainHp.value -= displayNum.value
+    else {
+      remainHp.value += displayNum.value
+      if (remainHp.value > props.param.hp) remainHp.value = props.param.hp
+    }
+  if (remainHp.value < 0) remainHp.value = 0
+  displayNum.value = 0
+}
+const allReset = () => {
+  remainHp.value = props.param.hp
+}
+const switchMode = () => {
+  mode.value = !mode.value
+}
+const onKeyDown = (event) => {
+  const key = event.key
+  const keyCode = event.keyCode
+  if (key === 'Tab') event.preventDefault()
+  if (keyCode === 46 || keyCode === 8) deleteNum()
+  else if (keyCode === 13) enterNum()
+  else if (keyCode === 32) {
+    event.preventDefault()
+    allReset()
+  } else if (!isNaN(key)) inputNum(parseInt(key))
+}
+const divisionHp = (num) => {
+  displayNum.value = parseInt(remainHp.value * num)
 }
 </script>
 

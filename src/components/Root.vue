@@ -1,17 +1,12 @@
-<style>
-@import '@/styles/destyle.css';
-@import '@/styles/common.css';
-</style>
-
 <template>
   <div class="app-root">
-    <sidebar/>
+    <Sidebar/>
     <main class="app-main">
       <router-view/>
     </main>
 
     <transition name="fade" appear>
-      <modal-window v-if="modalIsActive"/>
+      <ModalWindow v-if="modalIsActive"/>
     </transition>
   </div>
 </template>
@@ -26,3 +21,8 @@ const modalIsActive = computed(() => {
   return store.state.modalIsActive
 })
 </script>
+
+<style>
+@import '@/styles/destyle.css';
+@import '@/styles/common.css';
+</style>
