@@ -6,7 +6,8 @@
   />
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -27,16 +28,19 @@ ChartJS.register(
   LinearScale
 )
 
-export default {
-  components: { Bar },
-  data(){
-    return {
-      chartOptions: {
+const props = defineProps({
+  chartParam: {
+    type: Object,
+    required: true
+  }
+})
+
+const chartOptions = ref({
         responsive: true,
         scales: {
           y: {
             min: 0,
-            max: this.chartParam.maxHp,
+            max: props.chartParam.maxHp,
             ticks: {
               display: true
             },
@@ -50,32 +54,20 @@ export default {
             display: false
           }
         }
-      }
-    }
-  },
+      })
 
-  props: {
-    chartParam: {
-        type: Object,
-        required: true
-      }
-  },
-
-  computed: {
-    chartData() {
-      const data = {
-        labels: [
-          ''
-        ],
-        datasets: [{
-          label: '',
-          data: [this.chartParam.remainHp],
-          backgroundColor: 'rgba(0, 255, 0, 0.5)',
-          barPercentage: 0.4
-        }]
-      }
-      return data
-    }
-  }
-}
+const chartData = computed(() => {
+  const data = {
+          labels: [
+            ''
+          ],
+          datasets: [{
+            label: '',
+            data: [props.chartParam.remainHp],
+            backgroundColor: 'rgba(0, 255, 0, 0.5)',
+            barPercentage: 0.4
+          }]
+        }
+  return data
+})
 </script>

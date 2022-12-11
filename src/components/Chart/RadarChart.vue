@@ -6,7 +6,8 @@
   />
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
 import { Radar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -27,16 +28,19 @@ ChartJS.register(
   LineElement
 )
 
-export default {
-  components: { Radar },
-  data(){
-    return {
-      chartOptions: {
+const props = defineProps({
+  chartParam: {
+    type: Object,
+    required: true
+  }
+})
+
+const chartOptions = ref({
         responsive: true,
         elements: {
-            line: {
-                borderWidth: 2
-            }
+          line: {
+            borderWidth: 2
+          }
         },
         scales: {
           r: {
@@ -56,20 +60,10 @@ export default {
             display: false
           }
         }
-      }
-    }
-  },
+      })
 
-  props: {
-    chartParam: {
-        type: Object,
-        required: true
-      }
-  },
-
-  computed: {
-    chartData() {
-      const data = {
+const chartData = computed(() => {
+  const data = {
         labels: [
           'HP',
           '攻撃力',
@@ -77,7 +71,7 @@ export default {
         ],
         datasets: [{
           label: '',
-          data: this.chartParam.status,
+          data: props.chartParam.status,
           fill: true,
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgb(255, 99, 132)',
@@ -87,8 +81,6 @@ export default {
           pointHoverBorderColor: 'rgb(255, 99, 132)'
         }]
       }
-      return data
-    }
-  }
-}
+  return data
+})
 </script>
