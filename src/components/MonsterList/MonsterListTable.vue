@@ -52,122 +52,121 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import store from '@/store/index'
 import CalcModal from '@/components/Modal/DamageCalcModal.vue'
 import { markRaw } from "vue";
 
-export default {
-  data() {
-    return {
-      displayData: this.tableData,
-      sortStat: {
-        header: null,
-        order: null
-      },
-      inputWord: "",
-      keyword: "",
-      headerSet: [
-        { headerStr: '名前', sortStr: 'name' },
-        // { headerStr: '階層', sortStr: 'floor' },
-        { headerStr: '系1', sortStr: 'type1' },
-        { headerStr: '系2', sortStr: 'type2' },
-        { headerStr: 'HP', sortStr: 'hp' },
-        { headerStr: '攻撃', sortStr: 'attack' },
-        { headerStr: '防御', sortStr: 'defense' },
-        { headerStr: 'EXP', sortStr: 'exp' },
-        { headerStr: 'Lv', sortStr: 'level' },
-        { headerStr: '限Lv', sortStr: 'maxLevel' },
-        { headerStr: '回復', sortStr: 'heal' },
-        { headerStr: '成長', sortStr: 'growth' },
-        { headerStr: 'ドロ率', sortStr: 'drop' },
-        { headerStr: '修正値', sortStr: 'correction' }
-      ]
-    }
-  },
+const route = useRoute()
+const router = useRouter()
 
-  props: {
-    tableData : Array
-  },
+const props = defineProps({
+  tableData : Array
+})
 
-  computed: {
-    linkName() {
-      let name = null
-      if (this.$route.path === '/monster') name = 'monster_detail'
-        else name = 'monster_detail_gba'
-      return name
-    }
-  },
+// watch用にcomputedでpropsの値を返す
+const tableData = computed(() => {
+  return props.tableData
+})
 
-  methods: {
-    sortData(str) {
-      let newData = null
-      if (this.sortStat.header !== str || this.sortStat.order !== 'asc') {
-        // 昇順
-        newData = this.displayData.sort((a,b)=> {
-          if(a[str] < b[str]) return -1;
-          if(a[str] > b[str]) return 1;
-          return 0;
-        })
-        this.sortStat.order = 'asc'
-      } else if (this.sortStat.header === str && this.sortStat.order !== 'desc') {
-        // 降順
-        newData = this.displayData.sort((a,b)=> {
-          if(a[str] > b[str]) return -1;
-          if(a[str] < b[str]) return 1;
-          return 0;
-        })
-        this.sortStat.order = 'desc'
-      }
-      this.sortStat.header = str
-      this.displayData = newData
-      this.$refs.main_table.scrollTop = 0
-    },
+const main_table = ref()
+const displayData = ref(props.tableData)
+const sortStat = ref({
+  header: null,
+  order: null
+})
+const inputWord = ref("")
+const keyword = ref("")
+const headerSet = ref([
+  { headerStr: '名前', sortStr: 'name' },
+  // { headerStr: '階層', sortStr: 'floor' },
+  { headerStr: '系1', sortStr: 'type1' },
+  { headerStr: '系2', sortStr: 'type2' },
+  { headerStr: 'HP', sortStr: 'hp' },
+  { headerStr: '攻撃', sortStr: 'attack' },
+  { headerStr: '防御', sortStr: 'defense' },
+  { headerStr: 'EXP', sortStr: 'exp' },
+  { headerStr: 'Lv', sortStr: 'level' },
+  { headerStr: '限Lv', sortStr: 'maxLevel' },
+  { headerStr: '回復', sortStr: 'heal' },
+  { headerStr: '成長', sortStr: 'growth' },
+  { headerStr: 'ドロ率', sortStr: 'drop' },
+  { headerStr: '修正値', sortStr: 'correction' }
+])
 
-    linkToDetail(id) {
-      this.$router.push({ name: this.linkName, params: { id: id } })
-    },
+const linkName = computed(() => {
+  let name = null
+  if (route.path === '/monster') name = 'monster_detail'
+    else name = 'monster_detail_gba'
+  return name
+})
 
-    modalOn(monster) {
-      const data = {
-        component: markRaw(CalcModal),
-        header: 'ダメージ計算',
-        param: {
-          name: monster.name,
-          level: monster.level,
-          hp: monster.hp,
-          defense: monster.defense
-        }
-      }
-      this.$store.dispatch('setModalData', data)
-      this.$store.dispatch('modalOn')
-    },
+const sortData = (str) => {
+  let newData = null
+  if (sortStat.value.header !== str || sortStat.value.order !== 'asc') {
+    // 昇順
+    newData = displayData.value.sort((a,b)=> {
+      if(a[str] < b[str]) return -1;
+      if(a[str] > b[str]) return 1;
+      return 0;
+    })
+    sortStat.value.order = 'asc'
+  } else if (sortStat.value.header === str && sortStat.value.order !== 'desc') {
+    // 降順
+    newData = displayData.value.sort((a,b)=> {
+      if(a[str] > b[str]) return -1;
+      if(a[str] < b[str]) return 1;
+      return 0;
+    })
+    sortStat.value.order = 'desc'
+  }
+  sortStat.value.header = str
+  displayData.value = newData
+  main_table.value.scrollTop = 0
+}
 
-    search() {
-      this.keyword = this.inputWord
-    },
+const linkToDetail = (id) => {
+  router.push({ name: linkName.value, params: { id: id } })
+}
 
-    keywordClear() {
-      this.keyword = ''
-      this.inputWord = ''
-    },
-
-    isVisible(name) {
-      if (!this.keyword) return true
-      if (name.indexOf(this.keyword) !== -1) return true
-      return false
-    }
-  },
-
-  watch: {
-    tableData(nVal) {
-      this.displayData = nVal
-      this.sortData('id')
-      this.sortStat.header = null
-      this.sortStat.order = null
+const modalOn = (monster) => {
+  const data = {
+    component: markRaw(CalcModal),
+    header: 'ダメージ計算',
+    param: {
+      name: monster.name,
+      level: monster.level,
+      hp: monster.hp,
+      defense: monster.defense
     }
   }
-
+  store.dispatch('setModalData', data)
+  store.dispatch('modalOn')
 }
+
+const search = () => {
+  keyword.value = inputWord.value
+}
+
+const keywordClear = () => {
+  keyword.value = ''
+  inputWord.value = ''
+}
+
+const isVisible = (name) => {
+  if (!keyword.value) return true
+  if (name.indexOf(keyword.value) !== -1) return true
+  return false
+}
+
+watch(tableData, (nVal) => {
+  displayData.value = nVal
+  sortData('id')
+  sortStat.value.header = null
+  sortStat.value.order = null
+})
 </script>
 
 <style scoped>

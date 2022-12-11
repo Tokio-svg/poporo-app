@@ -88,7 +88,6 @@ const tableData = computed(() => {
 })
 
 const main_table = ref()
-
 const displayHeader = ref(props.tableData.header)
 const displayData = ref(props.tableData.data)
 const sortStat = ref({
