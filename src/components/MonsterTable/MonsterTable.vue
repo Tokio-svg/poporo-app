@@ -694,13 +694,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    linkToDetail(id) {
-      this.$router.push({ name:'monster_detail', params: { id: id } })
-    }
-  }
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const linkToDetail = (id) => {
+  router.push({ name:'monster_detail', params: { id: id } })
 }
 </script>
 

@@ -1,22 +1,15 @@
 <template>
-  <monster-table :table-data="MonsterData" />
+  <MonsterTable :table-data="MonsterTableData" />
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import MonsterTable from '@/components/MonsterList/MonsterListTable.vue'
 import MonsterData from '@/const/monsterData'
 
-export default {
-  components: {
-    MonsterTable
-  },
-
-  computed: {
-    MonsterData() {
-      return MonsterData.monsterData
-    }
-  }
-}
+const MonsterTableData = computed(() => {
+  return MonsterData.monsterData
+})
 </script>
 
 <style scoped>

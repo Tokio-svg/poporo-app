@@ -14,31 +14,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    modalData() {
-      return this.$store.state.modalData
-    },
+<script setup>
+import { computed } from 'vue'
+import store from '@/store/index'
 
-    component() {
-      return this.modalData.component
-    },
+const modalData = computed(() => {
+  return store.state.modalData
+})
 
-    header() {
-      return this.modalData.header
-    },
+const component = computed(() => {
+  return modalData.value.component
+})
 
-    param() {
-      return this.modalData.param
-    }
-  },
+const header = computed(() => {
+  return modalData.value.header
+})
 
-  methods: {
-    modalOff() {
-      this.$store.dispatch('modalOff')
-    }
-  }
+const param = computed(() => {
+  return modalData.value.param
+})
+
+const modalOff = () => {
+  store.dispatch('modalOff')
 }
 </script>
 
